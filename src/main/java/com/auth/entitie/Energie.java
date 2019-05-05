@@ -2,13 +2,14 @@ package com.auth.entitie;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Energie {
 
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_energie ;
 	private String des_energie ;
 	public int getId_energie() {

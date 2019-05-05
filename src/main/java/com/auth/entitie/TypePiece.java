@@ -2,12 +2,13 @@ package com.auth.entitie;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class TypePiece {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_typePiece ;
 	private String des_typePiece ;
 	public int getId_typePiece() {

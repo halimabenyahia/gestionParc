@@ -2,12 +2,13 @@ package com.auth.entitie;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Assurance {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_assurance ;
 	private String compagnie_ass ;
 	private String adr_assurance ;
