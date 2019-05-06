@@ -15,15 +15,14 @@ import com.test.TestParc;
 import com.test.TestParcRestController;
 
 public class ChauffeurTestRestService extends TestParcRestController {
-	
-ChauffeursRestService chauffeurService ;
-	
-	//Donne accès au résultat d'une requête exécutée.
+
+	ChauffeursRestService chauffeurService;
+
+	// Donne accès au résultat d'une requête exécutée.
 	private MvcResult mvcResult;
-	
-	
-	TestParc testParc ;
-	
+
+	TestParc testParc;
+
 //	public public ChauffeurTestRestController() {
 //		super();
 //	}
@@ -35,7 +34,8 @@ ChauffeursRestService chauffeurService ;
 			Chauffeurs chauffeur = new Chauffeurs();
 			chauffeur.setNom_ch("yahia");
 			chauffeurService.addChauffeur(chauffeur);
-			mvcResult = mvc.perform(MockMvcRequestBuilders.get("/chauffeurs").accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+			mvcResult = mvc.perform(MockMvcRequestBuilders.get("/chauffeurs").accept(MediaType.APPLICATION_JSON_VALUE))
+					.andReturn();
 
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
@@ -43,11 +43,10 @@ ChauffeursRestService chauffeurService ;
 			Chauffeurs[] chauffeurList = testParc.mapFromJson(content, Chauffeurs[].class);
 			assertTrue(chauffeurList.length > 0);
 
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Test
@@ -58,42 +57,40 @@ ChauffeursRestService chauffeurService ;
 			chauffeur.setNom_ch("yahia");
 			chauffeurService.addChauffeur(chauffeur);
 			String inputJson = testParc.mapToJson(chauffeur);
-			mvcResult = mvc.perform(MockMvcRequestBuilders.post("/addChauffeur").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			mvcResult = mvc.perform(MockMvcRequestBuilders.post("/addChauffeur")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
 			Chauffeurs foundChauffeurs = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
 			assertNotNull(foundChauffeurs);
 			assertEquals(foundChauffeurs.getNom_ch(), chauffeur.getNom_ch());
 
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Test
 	@Override
 	public void updateEntity() {
 		try {
-		Chauffeurs chauffeur = new Chauffeurs() ;
-		chauffeur.setNom_ch("yahia");
-		chauffeur = chauffeurService.addChauffeur(chauffeur);
-		chauffeur.setNom_ch("yahya");
-		String inputJson = testParc.mapToJson(chauffeur);
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put( "/editChauffeur")
-				.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-		int status = mvcResult.getResponse().getStatus();
-		assertEquals(200, status);
-		Chauffeurs chauffeurFound = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
-		assertNotNull(chauffeurFound);
-		assertEquals(chauffeurFound.getNom_ch(), chauffeur.getNom_ch());
-		}
-		catch (Exception e) {
+			Chauffeurs chauffeur = new Chauffeurs();
+			chauffeur.setNom_ch("yahia");
+			chauffeur = chauffeurService.addChauffeur(chauffeur);
+			chauffeur.setNom_ch("yahya");
+			String inputJson = testParc.mapToJson(chauffeur);
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put("/editChauffeur")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Chauffeurs chauffeurFound = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
+			assertNotNull(chauffeurFound);
+			assertEquals(chauffeurFound.getNom_ch(), chauffeur.getNom_ch());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	@Test
@@ -104,16 +101,17 @@ ChauffeursRestService chauffeurService ;
 			chauffeur.setNom_ch("yahia");
 			chauffeur = chauffeurService.addChauffeur(chauffeur);
 			String inputJson = testParc.mapToJson(chauffeur);
-			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete("/deleteChauffeur").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete("/deleteChauffeur")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
 			Chauffeurs chauffeurFound = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
 			assertEquals(null, chauffeurFound);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.auth.entitie.User;
+import com.auth.entitie.UserResponse;
 import com.auth.exception.CustomException;
 import com.auth.repository.UserRepository;
 import com.auth.security.JwtTokenProvider;
@@ -36,10 +37,16 @@ public class UserService {
 		return authenticationManager;
 	}
 
-	public String signin(String username, String password) {
+	public UserResponse signin(User user) {
 		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-			return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRoles());
+			
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+			System.out.println("after authenticat");
+			String token = jwtTokenProvider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRoles());
+			System.out.println(token);
+			UserResponse rep = new UserResponse(user.getUsername(),userRepository.findByUsername(user.getUsername()).getRoles(),token);
+			
+			return rep;
 		} catch (AuthenticationException e) {
 			throw new CustomException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
 		}

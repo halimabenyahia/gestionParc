@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.entitie.User;
+import com.auth.entitie.UserResponse;
 import com.auth.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -24,6 +27,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/users")
 @Api(tags = "users")
+@CrossOrigin(origins="*")
 public class UserController {
 
 	@Autowired
@@ -34,10 +38,10 @@ public class UserController {
 	@ApiResponses(value = { //
 			@ApiResponse(code = 400, message = "Something went wrong"), //
 			@ApiResponse(code = 422, message = "Invalid username/password supplied") })
-	public String login(//
-			@ApiParam("Username") @RequestParam String username, //
-			@ApiParam("Password") @RequestParam String password) {
-		return userService.signin(username, password);
+	public UserResponse login(//
+			@ApiParam("username") User user) {
+		
+		return userService.signin(user);
 	}
 
 //	  @PostMapping("/signup")
