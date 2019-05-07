@@ -92,7 +92,7 @@ public class UserController {
 //	  }
 
 	@GetMapping("/refresh")
-	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_AGENT')")
 	public String refresh(HttpServletRequest req) {
 		return userService.refresh(req.getRemoteUser());
 	}
