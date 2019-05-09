@@ -51,10 +51,16 @@ public class VehiculeRestService {
 	
 	}
 	
-	@RequestMapping(value="/vehiculebydepense",method=RequestMethod.GET)
-	public Vehicule getbydepense() {
-		return vehiculeRep.findByDepense();
+//	@RequestMapping(value="/vehiculebydepense",method=RequestMethod.GET)
+//	public Vehicule getbydepense() {
+//		return vehiculeRep.findByDepense();
+//	}
+	
+	@RequestMapping(value="/vehiculebyImmatriculation/{chaine}",method=RequestMethod.GET)
+	public Vehicule getbyImmatricle(@PathVariable String chaine) {
+		return vehiculeRep.findByImmatriculation("%"+chaine+"%");
 	}
+	
 
 	
 //	@RequestMapping(value="/halima",method=RequestMethod.GET)
@@ -90,10 +96,7 @@ public class VehiculeRestService {
 //	public Vehicule getVehicule8(){
 //		 return vehiculeRep.findBychauff();
 //	}
-//	@RequestMapping(value="/halima9",method=RequestMethod.GET)
-//	public Vehicule getVehicule9(){
-//		 return vehiculeRep.findbyDepense();
-//	}
+
 //	
 //	@RequestMapping(value="/halima10",method=RequestMethod.GET)
 //	public Vehicule getVehicule10(){

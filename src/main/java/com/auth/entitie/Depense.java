@@ -12,6 +12,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Depense {
 	
@@ -22,23 +27,36 @@ public class Depense {
 	private Long montant_ht ;
 	private Long tva ;
 	private Long ttc ;
-	private boolean mvt_caisse ;
+//	private boolean mvt_caisse ;
 	@Temporal(TemporalType.DATE)
 	private Date date_caisse ;
 	private String reference_d ;
-	//private 
+	private String compteur_d ;
+	private String type_depense ;
 	
+	@OneToOne
+	@JoinColumn(name="id_vehicule")
+	private Vehicule vehicule_dep ;
+	
+	@JsonProperty("id_vehicule")
+	private void unpackVehicule(Integer id_vehicule) {
+	    this.vehicule_dep = new Vehicule();
+	    vehicule_dep.setId_vehicule(id_vehicule);
+	}
 
 	@ManyToOne
 	@JoinColumn(name="id_fournisseur")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Fournisseur fournisseur_d ;
 	
 	@ManyToOne
 	@JoinColumn(name="id_piece")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Piece piece_d ;
 	
 	@OneToOne
 	@JoinColumn(name="id_depenseCar")
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private DepenseCarburant depense_carburant ;
 
 	public int getId_depense() {
@@ -81,13 +99,6 @@ public class Depense {
 		this.ttc = ttc;
 	}
 
-	public Boolean getMvt_caisse() {
-		return mvt_caisse;
-	}
-
-	public void setMvt_caisse(boolean mvt_caisse) {
-		this.mvt_caisse = mvt_caisse;
-	}
 
 	public Date getDate_caisse() {
 		return date_caisse;
@@ -129,28 +140,58 @@ public class Depense {
 	public void setDepense_carburant(DepenseCarburant depense_carburant) {
 		this.depense_carburant = depense_carburant;
 	}
+	
+	
+
+	public String getCompteur_d() {
+		return compteur_d;
+	}
+
+	public void setCompteur_d(String compteur_d) {
+		this.compteur_d = compteur_d;
+	}
+	
+	
+
+	public String getType_depense() {
+		return type_depense;
+	}
+
+	public void setType_depense(String type_depense) {
+		this.type_depense = type_depense;
+	}
+
+
+	public Vehicule getVehicule_dep() {
+		return vehicule_dep;
+	}
+
+	public void setVehicule_dep(Vehicule vehicule_dep) {
+		this.vehicule_dep = vehicule_dep;
+	}
 
 	public Depense() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc, boolean mvt_caisse,
+	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc,
 			Date date_caisse, String reference_d, Fournisseur fournisseur_d, Piece piece_d,
-			DepenseCarburant depense_carburant) {
+			DepenseCarburant depense_carburant, String compteur_d , String type_depense , Vehicule vehicule_dep) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
 		this.montant_ht = montant_ht;
 		this.tva = tva;
 		this.ttc = ttc;
-		this.mvt_caisse = mvt_caisse;
 		this.date_caisse = date_caisse;
 		this.reference_d = reference_d;
-
 		this.fournisseur_d = fournisseur_d;
 		this.piece_d = piece_d;
 		this.depense_carburant = depense_carburant;
+		this.compteur_d = compteur_d;
+		this.type_depense = type_depense ;
+		this.vehicule_dep = vehicule_dep ;
 	}
 
 }

@@ -27,7 +27,7 @@ public class DepenseRestService {
 	}
 
 	@RequestMapping(value="/depenses/{id}",method=RequestMethod.GET)
-	public Optional<Depense> getDepenses(@PathVariable int id){
+	public Optional<Depense> getDepensesById(@PathVariable int id){
 		return depenseRep.findById(id);
 	}
 	
@@ -47,6 +47,16 @@ public class DepenseRestService {
 		 return depenseRep.save(c);
 	}
 	
+	
+	@RequestMapping(value="/depenseByimm/{parametre}",method=RequestMethod.GET)
+	public Iterable<Depense> getDepenseByImm(@PathVariable String parametre){
+		return depenseRep.getbyImmatricul("%"+parametre);
+	}
+	
+	@RequestMapping(value="/sumMonth1/{parametre}",method=RequestMethod.GET)
+	public Long getSumMonth1(@PathVariable String parametre){
+		return depenseRep.getSUM("%"+parametre);
+	}
 	
 //	@RequestMapping(value="/essai",method=RequestMethod.GET)
 //	public Depense getDepenses1(){
