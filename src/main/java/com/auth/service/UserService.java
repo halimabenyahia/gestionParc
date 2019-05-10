@@ -39,7 +39,6 @@ public class UserService {
 
 	public UserResponse signin(User user) {
 		try {
-			
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 			System.out.println("after authenticat");
 			String token = jwtTokenProvider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRoles());

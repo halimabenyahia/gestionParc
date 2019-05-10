@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.auth.entitie.Role;
 import com.auth.entitie.User;
+import com.auth.service.DepenseService;
 import com.auth.service.UserService;
 
 
@@ -18,6 +19,9 @@ public class TestAuthApplication implements CommandLineRunner {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	DepenseService depenseService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TestAuthApplication.class, args);
@@ -40,6 +44,8 @@ public class TestAuthApplication implements CommandLineRunner {
 //	    client.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_AGENT)));
 //
 //	    userService.signup(client);
+		System.out.println("listeDepense");
+		depenseService.listeDepenses();
 	  }
 		
 	}

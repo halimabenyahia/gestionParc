@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.entitie.Depense;
+import com.auth.entitie.DepenseResponse;
 import com.auth.repository.DepenseRepository;
+import com.auth.service.DepenseService;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -21,9 +23,12 @@ public class DepenseRestService {
 	@Autowired
 	private DepenseRepository depenseRep ;
 	
+	@Autowired
+	private DepenseService depenseService ;
+	
 	@RequestMapping(value="/depenses",method=RequestMethod.GET)
-	public List<Depense> getDepenses(){
-		return depenseRep.findAll();
+	public List<DepenseResponse> getDepenses(){
+		return depenseService.listeDepenses();
 	}
 
 	@RequestMapping(value="/depenses/{id}",method=RequestMethod.GET)
@@ -53,10 +58,11 @@ public class DepenseRestService {
 		return depenseRep.getbyImmatricul("%"+parametre);
 	}
 	
-	@RequestMapping(value="/sumMonth1/{parametre}",method=RequestMethod.GET)
-	public Long getSumMonth1(@PathVariable String parametre){
-		return depenseRep.getSUM("%"+parametre);
+	@RequestMapping(value="/sumMonth1",method=RequestMethod.GET)
+	public Long getSumMonth1(){
+		return depenseRep.getSUM();
 	}
+	
 	
 //	@RequestMapping(value="/essai",method=RequestMethod.GET)
 //	public Depense getDepenses1(){
