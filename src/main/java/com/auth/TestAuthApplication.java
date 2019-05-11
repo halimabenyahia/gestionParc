@@ -44,8 +44,8 @@ public class TestAuthApplication implements CommandLineRunner {
 //	    client.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_AGENT)));
 //
 //	    userService.signup(client);
-		System.out.println("listeDepense");
-		depenseService.listeDepenses();
+	//	System.out.println("listeDepense");
+	//	depenseService.listeDepenses();
 	  }
 		
 	}

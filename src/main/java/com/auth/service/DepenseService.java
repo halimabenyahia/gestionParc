@@ -27,7 +27,7 @@ public class DepenseService {
 	private DepenseRepository depenseRep ;
 	
 	
-	public Long getSumJanvier (String matricule,int mois) {
+	public Long getSumMonth (String matricule,int mois) {
 		Long jan=new Long(0);
 		try {
 			 jan=depenseRep.getJanvier(matricule,mois);
@@ -58,18 +58,18 @@ public class DepenseService {
 			
 		DepenseResponse d=new DepenseResponse();
 		d.setImmatriculation(v.get(i).getImmatriculation());
-		d.setDep_janvier(getSumJanvier(v.get(i).getImmatriculation(),01));
-		d.setDep_fevrier(getSumJanvier(v.get(i).getImmatriculation(),02));
-		d.setDep_mars(getSumJanvier(v.get(i).getImmatriculation(),03));
-		d.setDep_avril(getSumJanvier(v.get(i).getImmatriculation(),04));
-		d.setDep_mai(getSumJanvier(v.get(i).getImmatriculation(),05));
-		d.setDep_juin(getSumJanvier(v.get(i).getImmatriculation(),06));
-		d.setDep_juillet(getSumJanvier(v.get(i).getImmatriculation(),07));
-		d.setDep_aout(getSumJanvier(v.get(i).getImmatriculation(),8));
-		d.setDep_septembre(getSumJanvier(v.get(i).getImmatriculation(),9));
-		d.setDep_octobre(getSumJanvier(v.get(i).getImmatriculation(),10));
-		d.setDep_novembre(getSumJanvier(v.get(i).getImmatriculation(),11));
-		d.setDep_decembre(getSumJanvier(v.get(i).getImmatriculation(),12));
+		d.setDep_janvier(getSumMonth(v.get(i).getImmatriculation(),01));
+		d.setDep_fevrier(getSumMonth(v.get(i).getImmatriculation(),02));
+		d.setDep_mars(getSumMonth(v.get(i).getImmatriculation(),03));
+		d.setDep_avril(getSumMonth(v.get(i).getImmatriculation(),04));
+		d.setDep_mai(getSumMonth(v.get(i).getImmatriculation(),05));
+		d.setDep_juin(getSumMonth(v.get(i).getImmatriculation(),06));
+		d.setDep_juillet(getSumMonth(v.get(i).getImmatriculation(),07));
+		d.setDep_aout(getSumMonth(v.get(i).getImmatriculation(),8));
+		d.setDep_septembre(getSumMonth(v.get(i).getImmatriculation(),9));
+		d.setDep_octobre(getSumMonth(v.get(i).getImmatriculation(),10));
+		d.setDep_novembre(getSumMonth(v.get(i).getImmatriculation(),11));
+		d.setDep_decembre(getSumMonth(v.get(i).getImmatriculation(),12));
 		l.add(d);
 		
 		

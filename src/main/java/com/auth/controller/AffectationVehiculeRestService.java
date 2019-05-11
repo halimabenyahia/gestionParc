@@ -50,7 +50,7 @@ public class AffectationVehiculeRestService {
 
 
 	@RequestMapping(value="/affectationByParam/{parametre}",method=RequestMethod.GET)
-	public List<AffectationVehicule> getAffectationParam(@PathVariable String parametre){
+	public AffectationVehicule getAffectationParam(@PathVariable String parametre){
 		return affectationVehiculeRep.findByAffectationParam("%"+parametre+"%");
 	}
 

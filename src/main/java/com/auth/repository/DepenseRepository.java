@@ -22,12 +22,12 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 	@Query("select v from Depense v where v.vehicule_dep.immatriculation like :parametre")
 	public List<Depense> getbyImmatricul(@Param("parametre") String parametre) ;
 	
+	
+	
 	String q="select SUM(dep.ttc) from Depense dep where MONTH(dep.date_depense) = :mois ";
 	String matricule=" and dep.vehicule_dep.immatriculation  =:matricule";
 	@Query(q+matricule) 	
        public  Long getJanvier(@PathVariable String matricule,@PathVariable int mois);
-	
-	
 	
 	
 	

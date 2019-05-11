@@ -26,9 +26,14 @@ public class DepenseRestService {
 	@Autowired
 	private DepenseService depenseService ;
 	
-	@RequestMapping(value="/depenses",method=RequestMethod.GET)
-	public List<DepenseResponse> getDepenses(){
-		return depenseService.listeDepenses();
+	@RequestMapping(value="/depensesSum",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumDepenses(){
+		return depenseService.listeDepenses(); 
+	}
+	
+	@RequestMapping(value="/listdepenses",method=RequestMethod.GET)
+	public List<Depense> getDepenses(){
+		return depenseRep.findAll();
 	}
 
 	@RequestMapping(value="/depenses/{id}",method=RequestMethod.GET)
