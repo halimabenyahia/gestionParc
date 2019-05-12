@@ -42,6 +42,14 @@ public class TestAuthApplication implements CommandLineRunner {
 //	    client.setPassword("client");
 //	    client.setEmail("client@email.com");
 //	    client.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_AGENT)));
+		
+//		User agent = new User();
+//	    agent.setUsername("agent1");
+//	    agent.setPassword("agent1");
+//	    agent.setEmail("agent1@email.com");
+//	    agent.setRoles(new ArrayList<Role>(Arrays.asList(Role.ROLE_AGENT)));
+//
+//	    userService.signup(agent);
 //
 //	    userService.signup(client);
 	//	System.out.println("listeDepense");
