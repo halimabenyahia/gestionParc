@@ -53,6 +53,10 @@ public class MarqueRestService {
 		return marqueRep.findByParametreM("%"+parametre+"%");
 	}
 	
+	@RequestMapping(value="/marqueBydesing/{parametre}",method=RequestMethod.GET)
+	public Marque getMarqueDes(@PathVariable String parametre){
+		return marqueRep.findByDesignation("%"+parametre+"%");
+	}
 	
 	
 //	@RequestMapping(value="/marqueByMo",method=RequestMethod.GET)

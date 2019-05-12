@@ -52,4 +52,8 @@ public class AssuranceRestService {
 		return assuranceRep.findByParametreAssurance("%"+parametre+"%");
 	}
 
+	@RequestMapping(value="/assuranceByCompagnie/{parametre}",method=RequestMethod.GET)
+	public Assurance getAssuranceCompagnie(@PathVariable String parametre){
+		return assuranceRep.findByAssurance("%"+parametre+"%");
+	}
 }

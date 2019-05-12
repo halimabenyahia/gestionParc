@@ -13,4 +13,7 @@ public interface EnergieRepository extends JpaRepository<Energie, Integer> {
 	
 	@Query("select m from Energie m where m.des_energie like :parametre")
 	public List<Energie> findByParametreEnergie(@Param("parametre") String parametre) ;
+
+	@Query("select m from Energie m where m.des_energie like :parametre")
+	public Energie findByEnergie(@Param("parametre") String parametre) ;
 }

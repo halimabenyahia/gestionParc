@@ -13,4 +13,7 @@ public interface TypeBoiteRepository extends JpaRepository<TypeBoite, Integer> {
 	
 	@Query("select m from TypeBoite m where m.des_boite like :parametre")
 	public List<TypeBoite> findByParametreBoite(@Param("parametre") String parametre) ;
+	
+	@Query("select m from TypeBoite m where m.des_boite like :parametre")
+	public TypeBoite findByBoite(@Param("parametre") String parametre) ;
 }

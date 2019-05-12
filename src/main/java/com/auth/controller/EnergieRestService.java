@@ -51,4 +51,9 @@ public class EnergieRestService {
 		return energieRep.findByParametreEnergie("%"+parametre+"%");
 	}
 	
+	@RequestMapping(value="/energieByDes/{parametre}",method=RequestMethod.GET)
+	public Energie getEnergieDes(@PathVariable String parametre){
+		return energieRep.findByEnergie("%"+parametre+"%");
+	}
+	
 }

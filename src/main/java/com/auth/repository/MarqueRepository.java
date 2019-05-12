@@ -17,6 +17,8 @@ public interface MarqueRepository extends JpaRepository<Marque, Integer> {
 	public List<Marque> findByParametreM(@Param("parametre") String parametre) ;
 
 	
+	@Query("select m from Marque m where m.des_marque like :parametre")
+	public Marque findByDesignation(@Param("parametre") String parametre) ;
 //	@Query("from Marque m where m.modele_m = 1 ")
 //	public Marque findbyModele();
 

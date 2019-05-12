@@ -12,5 +12,8 @@ public interface AssuranceRepository extends JpaRepository<Assurance, Integer> {
 	
 	@Query("select m from Assurance m where m.compagnie_ass like :parametre")
 	public List<Assurance> findByParametreAssurance(@Param("parametre") String parametre) ;
+	
+	@Query("select m from Assurance m where m.compagnie_ass like :parametre")
+	public Assurance findByAssurance(@Param("parametre") String parametre) ;
 
 }

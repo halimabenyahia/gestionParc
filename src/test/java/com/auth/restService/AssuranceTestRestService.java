@@ -60,9 +60,9 @@ public class AssuranceTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			List<Assurance> foundAssurance = assuranceService.getAssuranceParam(assurance.getCompagnie_ass());
+			Assurance foundAssurance = assuranceService.getAssuranceCompagnie(assurance.getCompagnie_ass());
 			assertNotNull(foundAssurance);
-		//	assertEquals(foundAssurance., assurance.getCompagnie_ass();
+			assertEquals(foundAssurance.getCompagnie_ass(), assurance.getCompagnie_ass());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,16 +70,46 @@ public class AssuranceTestRestService extends TestParcRestController {
 		
 	}
 
-	
+	@Test
 	@Override
 	public void updateEntity() {
-		// TODO Auto-generated method stub
+		try {
+			Assurance assurance = new Assurance();
+			assurance.setCompagnie_ass("biat");
+			assurance = assuranceService.addAssurance(assurance);
+			assurance.setCompagnie_ass("biaatt");
+			String inputJson = testParc.mapToJson(assurance);
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put("/addAssurance")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Assurance assuranceFound = assuranceService.getAssuranceCompagnie(assurance.getCompagnie_ass());
+			assertNotNull(assuranceFound);
+			assertEquals(assuranceFound.getCompagnie_ass(), assurance.getCompagnie_ass());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
+	@Test
 	@Override
 	public void deleteEntity() {
-		// TODO Auto-generated method stub
+		try {
+			Assurance assurance = new Assurance();
+			assurance.setCompagnie_ass("biat");
+			assurance = assuranceService.addAssurance(assurance);
+			String inputJson = testParc.mapToJson(assurance);
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete("/deleteAssurance")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Assurance assuranceFound = assuranceService.getAssuranceCompagnie(assurance.getCompagnie_ass());
+			assertEquals(null, assuranceFound);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
