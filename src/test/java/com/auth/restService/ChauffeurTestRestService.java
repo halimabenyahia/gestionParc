@@ -23,10 +23,6 @@ public class ChauffeurTestRestService extends TestParcRestController {
 
 	TestParc testParc;
 
-//	public public ChauffeurTestRestController() {
-//		super();
-//	}
-
 	@Test
 	@Override
 	public void getAllEntityList() {
@@ -61,7 +57,7 @@ public class ChauffeurTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Chauffeurs foundChauffeurs = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
+			Chauffeurs foundChauffeurs = chauffeurService.getChauffeurbynom(chauffeur.getNom_ch());
 			assertNotNull(foundChauffeurs);
 			assertEquals(foundChauffeurs.getNom_ch(), chauffeur.getNom_ch());
 
@@ -84,7 +80,7 @@ public class ChauffeurTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Chauffeurs chauffeurFound = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
+			Chauffeurs chauffeurFound = chauffeurService.getChauffeurbynom(chauffeur.getNom_ch());
 			assertNotNull(chauffeurFound);
 			assertEquals(chauffeurFound.getNom_ch(), chauffeur.getNom_ch());
 		} catch (Exception e) {
@@ -105,7 +101,7 @@ public class ChauffeurTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Chauffeurs chauffeurFound = chauffeurService.getChauffeurParam(chauffeur.getNom_ch());
+			Chauffeurs chauffeurFound = chauffeurService.getChauffeurbynom(chauffeur.getNom_ch());
 			assertEquals(null, chauffeurFound);
 
 		} catch (Exception e) {

@@ -12,7 +12,7 @@ public interface ChauffeursRepository extends JpaRepository<Chauffeurs, Integer>
 	
 	
 	@Query("select m from Chauffeurs m where m.nom_ch like :parametre")
-	public Chauffeurs findByParametreChauffeur(@Param("parametre") String parametre) ;
+	public List<Chauffeurs> findByParametreChauffeur(@Param("parametre") String parametre) ;
 	
 	@Query("select m from Chauffeurs m where m.nom_ch like :parametre")
 	public Chauffeurs findBynomChauffeur(@Param("parametre") String parametre) ;

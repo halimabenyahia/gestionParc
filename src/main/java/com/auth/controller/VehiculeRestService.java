@@ -50,58 +50,16 @@ public class VehiculeRestService {
 	
 	}
 	
-//	@RequestMapping(value="/vehiculebydepense",method=RequestMethod.GET)
-//	public Vehicule getbydepense() {
-//		return vehiculeRep.findByDepense();
-//	}
-	
 	@CrossOrigin(origins="*")	
 	@RequestMapping(value="/vehiculebyImmatriculation/{chaine}",method=RequestMethod.GET)
-	public Vehicule getbyImmatricle(@PathVariable String chaine) {
+	public List<Vehicule> getbyImmatricle(@PathVariable String chaine) {
 		System.out.println("in getByMat");
 		return vehiculeRep.findByImmatriculation("%"+chaine+"%");
 	}
 	
-
-	
-//	@RequestMapping(value="/halima",method=RequestMethod.GET)
-//	public Vehicule getbyAssurance(){
-//	 return vehiculeRep.findByAssurance();
-//	}
-//	
-//	@RequestMapping(value="/halima2",method=RequestMethod.GET)
-//	public Vehicule getVehicule1(){
-//		 return vehiculeRep.findVehiculeByTypeBoite();
-//	}
-//	@RequestMapping(value="/halima3",method=RequestMethod.GET)
-//	public Vehicule getVehicule3(){
-//		 return vehiculeRep.findByEnergie();
-//	}
-//	@RequestMapping(value="/halima4",method=RequestMethod.GET)
-//	public Vehicule getVehicule4(){
-//		 return vehiculeRep.findByAffec();
-//	}
-//	@RequestMapping(value="/halima5",method=RequestMethod.GET)
-//	public Vehicule getVehicule5(){
-//		 return vehiculeRep.findByContrat();
-//	}
-//	@RequestMapping(value="/halima6",method=RequestMethod.GET)
-//	public Vehicule getVehicule6(){
-//		 return vehiculeRep.findByMarque();
-//	}
-//	@RequestMapping(value="/halima7",method=RequestMethod.GET)
-//	public Vehicule getVehicule7(){
-//		 return vehiculeRep.findbyModele();
-//	}
-//	@RequestMapping(value="/halima8",method=RequestMethod.GET)
-//	public Vehicule getVehicule8(){
-//		 return vehiculeRep.findBychauff();
-//	}
-
-//	
-//	@RequestMapping(value="/halima10",method=RequestMethod.GET)
-//	public Vehicule getVehicule10(){
-//		 return vehiculeRep.findbyProg();
-//	}
-//	
+	@RequestMapping(value="/vehiculebyImmatriculationV/{chaine}",method=RequestMethod.GET)
+	public Vehicule getbyImmatricleV(@PathVariable String chaine) {
+		System.out.println("in getByMat");
+		return vehiculeRep.findByImmV("%"+chaine+"%");
+	}
 }

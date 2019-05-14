@@ -51,5 +51,10 @@ public class TypeBoiteRestService {
 	public List<TypeBoite> getBoiteParam(@PathVariable String parametre){
 		return typeBoiteRep.findByParametreBoite("%"+parametre+"%");
 	}
+	
+	@RequestMapping(value="/boiteByDes/{parametre}",method=RequestMethod.GET)
+	public TypeBoite getBoiteDes(@PathVariable String parametre){
+		return typeBoiteRep.findByBoite("%"+parametre+"%");
+	}
 
 }

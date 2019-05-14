@@ -16,28 +16,15 @@ import com.auth.entitie.DepenseResponse;
 import com.auth.entitie.Vehicule;
 
 public interface DepenseRepository extends JpaRepository<Depense, Integer> {
-	
-    
-	
+
 	@Query("select v from Depense v where v.vehicule_dep.immatriculation like :parametre")
-	public List<Depense> getbyImmatricul(@Param("parametre") String parametre) ;
-	
-	
-	
-	String q="select SUM(dep.ttc) from Depense dep where MONTH(dep.date_depense) = :mois ";
-	String matricule=" and dep.vehicule_dep.immatriculation  =:matricule";
-	@Query(q+matricule) 	
-       public  Long getJanvier(@PathVariable String matricule,@PathVariable int mois);
-	
-	
-	
-	
-	
-	@Query("select d.vehicule_dep.immatriculation ,SUM(d.ttc) from Depense d "
-			+ "where MONTH(d.date_depense) = 01 "
-			+ "group by d.vehicule_dep.immatriculation ")
-	public Long getSUM();
-	
+	public List<Depense> getbyImmatricul(@Param("parametre") String parametre);
 
+	String q = "select SUM(dep.ttc) from Depense dep where MONTH(dep.date_depense) = :mois ";
+	String matricule = " and dep.vehicule_dep.immatriculation  =:matricule";
+	@Query(q + matricule)
+	public Long getAllMonths(@PathVariable String matricule, @PathVariable int mois);
 
+	
+	//String req = "select d f"
 }

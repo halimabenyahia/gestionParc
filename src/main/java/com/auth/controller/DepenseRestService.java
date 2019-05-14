@@ -63,30 +63,8 @@ public class DepenseRestService {
 		return depenseRep.getbyImmatricul("%"+parametre);
 	}
 	
-	@RequestMapping(value="/sumMonth1",method=RequestMethod.GET)
-	public Long getSumMonth1(){
-		return depenseRep.getSUM();
+	@RequestMapping(value="/sumdepenseByimm/{parametre}",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre){
+		return depenseService.oneDepense("%"+parametre);
 	}
-	
-	
-//	@RequestMapping(value="/essai",method=RequestMethod.GET)
-//	public Depense getDepenses1(){
-//		return depenseRep.findbyfour();
-//	}
-//	@RequestMapping(value="/essai2",method=RequestMethod.GET)
-//	public Depense getDepenses2(){
-//		return depenseRep.findByidimm();
-//	}
-//	@RequestMapping(value="/essai3",method=RequestMethod.GET)
-//	public Depense getDepenses3(){
-//		return depenseRep.findByPiece();
-//	}
-//	
-//	@RequestMapping(value="/essai4",method=RequestMethod.GET)
-//	public Depense getDepenses4(){
-//		return depenseRep.findbydepCar();
-//	}
-	
-	
-
 }

@@ -62,7 +62,7 @@ public class VehiculeTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Vehicule foundVehicule = vehiculeService.getbyImmatricle(vehicule.getImmatriculation());
+			Vehicule foundVehicule = vehiculeService.getbyImmatricleV(vehicule.getImmatriculation());
 			assertNotNull(foundVehicule);
 			assertEquals(foundVehicule.getImmatriculation(), vehicule.getImmatriculation());
 
@@ -85,7 +85,7 @@ public class VehiculeTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Vehicule vehiculeFound = vehiculeService.getbyImmatricle(vehicule.getImmatriculation());
+			Vehicule vehiculeFound = vehiculeService.getbyImmatricleV(vehicule.getImmatriculation());
 			assertNotNull(vehiculeFound);
 			assertEquals(vehiculeFound.getImmatriculation(), vehicule.getImmatriculation());
 		} catch (Exception e) {
@@ -106,7 +106,7 @@ public class VehiculeTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			Vehicule vehiculeFound = vehiculeService.getbyImmatricle(vehicule.getImmatriculation());
+			Vehicule vehiculeFound = vehiculeService.getbyImmatricleV(vehicule.getImmatriculation());
 			assertEquals(null, vehiculeFound);
 
 		} catch (Exception e) {
