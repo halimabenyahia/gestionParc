@@ -16,7 +16,6 @@ import com.auth.repository.VehiculeRepository;
 
 @RestController
 @CrossOrigin(origins="*")
-
 public class VehiculeRestService {
 	
 	@Autowired
@@ -56,8 +55,10 @@ public class VehiculeRestService {
 //		return vehiculeRep.findByDepense();
 //	}
 	
+	@CrossOrigin(origins="*")	
 	@RequestMapping(value="/vehiculebyImmatriculation/{chaine}",method=RequestMethod.GET)
 	public Vehicule getbyImmatricle(@PathVariable String chaine) {
+		System.out.println("in getByMat");
 		return vehiculeRep.findByImmatriculation("%"+chaine+"%");
 	}
 	
@@ -103,7 +104,4 @@ public class VehiculeRestService {
 //		 return vehiculeRep.findbyProg();
 //	}
 //	
-	
-	
-
 }

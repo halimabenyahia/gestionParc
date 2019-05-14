@@ -39,7 +39,7 @@ public class UserController {
 			@ApiResponse(code = 400, message = "Something went wrong"), //
 			@ApiResponse(code = 422, message = "Invalid username/password supplied") })
 	public UserResponse login(//
-			@ApiParam("username") User user) {
+			@ApiParam("username")@RequestBody User user) {
 		
 		return userService.signin(user);
 	}
