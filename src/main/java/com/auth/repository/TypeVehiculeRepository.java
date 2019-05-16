@@ -12,5 +12,8 @@ public interface TypeVehiculeRepository extends JpaRepository<TypeVehicule, Inte
 	
 	@Query("select m from TypeVehicule m where m.des_typeVehicule like :parametre")
 	public List<TypeVehicule> findByTypeVehiculeParam(@Param("parametre") String parametre) ;
+	
+	@Query("select m from TypeVehicule m where m.des_typeVehicule like :parametre")
+	public TypeVehicule findByTypeVehicule(@Param("parametre") String parametre) ;
 
 }

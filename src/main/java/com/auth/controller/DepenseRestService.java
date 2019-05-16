@@ -67,4 +67,6 @@ public class DepenseRestService {
 	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre){
 		return depenseService.oneDepense("%"+parametre);
 	}
+	
+
 }

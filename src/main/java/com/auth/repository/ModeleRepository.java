@@ -13,4 +13,6 @@ public interface ModeleRepository extends JpaRepository<Modele, Integer> {
 	@Query("select m from Modele m where m.des_modele like :parametre")
 	public List<Modele> findByParamModel(@Param("parametre") String parametre) ;
 
+	@Query("select m from Modele m where m.des_modele like :parametre")
+	public Modele findByModelDes(@Param("parametre") String parametre);
 }

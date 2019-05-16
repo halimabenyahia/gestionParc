@@ -52,5 +52,8 @@ public class ModeleRestService {
 	public List<Modele> getModeleParam(@PathVariable String parametre){
 		return modeleRep.findByParamModel("%"+parametre+"%");
 	}
-
+	@RequestMapping(value="/modeleByDes/{parametre}",method=RequestMethod.GET)
+	public Modele getModeleDes(@PathVariable String parametre){
+		return modeleRep.findByModelDes("%"+parametre);
+	}
 }

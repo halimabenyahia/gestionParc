@@ -51,6 +51,9 @@ public class TypeVehiculeRestService {
 	public List<TypeVehicule> getTypevehiculeParam(@PathVariable String parametre){
 		return typeVehiculeRep.findByTypeVehiculeParam("%"+parametre+"%");
 	}
-	
+	@RequestMapping(value="/typevehiculeByDes/{parametre}",method=RequestMethod.GET)
+	public TypeVehicule getTypevehiculeByDes(@PathVariable String parametre){
+		return typeVehiculeRep.findByTypeVehicule("%"+parametre+"%");
+	}
 
 }

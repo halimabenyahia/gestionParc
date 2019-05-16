@@ -32,6 +32,11 @@ public class DepenseService {
 		}
 		return jan;
 	}
+	
+//	public Long getSumByType(String param1,int mois , String param2) {
+//		Long sum = depenseRep.findSumDepByType(param1, mois, param2);
+//		return sum ;
+//	}
 
 	public List<DepenseResponse> listeDepenses() {
 		LinkedList<DepenseResponse> l = new LinkedList<DepenseResponse>();
