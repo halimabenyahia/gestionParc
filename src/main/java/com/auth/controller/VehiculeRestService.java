@@ -62,4 +62,25 @@ public class VehiculeRestService {
 		System.out.println("in getByMat");
 		return vehiculeRep.findByImmV("%"+chaine+"%");
 	}
+	
+	@RequestMapping(value="/vehiculebyCarburant/{carburant}",method=RequestMethod.GET)
+	public List<Vehicule> getVehiculeByCarburant(@PathVariable String carburant) {
+		return vehiculeRep.findByCarburant("%"+carburant+"%");
+	}
+	
+	@RequestMapping(value="/vehiculebyAffectation/{affectation}",method=RequestMethod.GET)
+	public List<Vehicule> getVehiculeByAffectation(@PathVariable String affectation) {
+		return vehiculeRep.findByAffectation("%"+affectation+"%");
+	}
+	
+	@RequestMapping(value="/vehiculebyType/{type}",method=RequestMethod.GET)
+	public List<Vehicule> getVehiculeByType(@PathVariable String type) {
+		return vehiculeRep.findByTypeVehicule("%"+type+"%");
+	}
+	
+	@RequestMapping(value="/nombreVehicule",method=RequestMethod.GET)
+	public int getNombreVehicule() {
+		return vehiculeRep.getNombreVehicule();
+	}
+	
 }
