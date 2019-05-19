@@ -30,6 +30,7 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 //			+ "and d.type_depense = :param2")
 //	public Long findSumDepByType(@PathVariable String param1,@PathVariable int mois , @PathVariable String param2);
 
-	
+	@Query("select v from Depense v where v.type_depense like :parametre")
+	public Depense getdepenseByTtype(@Param("parametre") String parametre);
  
 }
