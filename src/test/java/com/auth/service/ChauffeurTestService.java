@@ -33,7 +33,6 @@ public class ChauffeurTestService extends TestParcService{
 		savedChauffeur.setNom_ch("ben");
 		savedChauffeur = chauffeurServiceNonMocked.addChauffeur(savedChauffeur);
 		Chauffeurs foundChauffeur = chauffeurServiceNonMocked.getChauffeurbynom(savedChauffeur.getNom_ch());
-		System.out.println("--------------- Searching for Garantie ---------------");
 		assertNotNull(foundChauffeur);
 		assertEquals(foundChauffeur.getId_chauffeur(), savedChauffeur.getId_chauffeur());
 		

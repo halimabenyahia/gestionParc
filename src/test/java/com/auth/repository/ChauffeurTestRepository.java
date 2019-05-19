@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class ChauffeurTestRepository extends TestParcRepository {
 	public void givenEntityRepository_whenSaving() {
 		System.out.println("--------------- Testing givenEntityRepository_whenSaving Method ---------------");
 		Chauffeurs savedchauffeur=new Chauffeurs() ;
-		savedchauffeur.setNom_ch("ben romdhane");
+		savedchauffeur.setNom_ch("ben ali");
 		savedchauffeur=chauffeurRep.save(savedchauffeur);
 		System.out.println("--------------- chauffeur saved ---------------");
 		Chauffeurs foundChauffeur = chauffeurRep.findBynomChauffeur(savedchauffeur.getNom_ch());
@@ -40,9 +41,9 @@ public class ChauffeurTestRepository extends TestParcRepository {
 	public void givenEntityRepository_whenUpdating() {
 		System.out.println("--------------- Testing givenEntityRepository_whenUpdating Method ---------------");
 		Chauffeurs savedchauffeur=new Chauffeurs() ;
-		savedchauffeur.setNom_ch("ben yahia");
+		savedchauffeur.setNom_ch("ben ali");
 		savedchauffeur = chauffeurRep.save(savedchauffeur);
-		savedchauffeur.setNom_ch("ben yahya");
+		savedchauffeur.setNom_ch("ali");
 		savedchauffeur = chauffeurRep.save(savedchauffeur);
 	//	Chauffeurs foundChauffeurs = chauffeurRep.findById(savedchauffeur.getId_chauffeur());
 	//	assertEquals(foundChauffeurs.getNom_ch(), savedchauffeur.getNom_ch());
@@ -57,7 +58,7 @@ public class ChauffeurTestRepository extends TestParcRepository {
 		savedChauffeurs.setNom_ch("ben yahia");
 		savedChauffeurs = chauffeurRep.save(savedChauffeurs);
 		chauffeurRep.delete(savedChauffeurs);
-		Chauffeurs foundChauffeurs = (Chauffeurs) chauffeurRep.findBynomChauffeur(savedChauffeurs.getNom_ch());
+		Chauffeurs foundChauffeurs = chauffeurRep.findBynomChauffeur(savedChauffeurs.getNom_ch());
 		assertEquals(null, foundChauffeurs);
 
 		
@@ -67,7 +68,7 @@ public class ChauffeurTestRepository extends TestParcRepository {
 	@Override
 	public void givenEntityRepository_whenRetrievingAll() {
 		Chauffeurs savedChauffeurs = new Chauffeurs() ;
-		//savedChauffeurs.setNom_ch("ben yahia");
+		savedChauffeurs.setNom_ch("ben yahia");
 		savedChauffeurs = chauffeurRep.save(savedChauffeurs);
 		List<Chauffeurs> list = chauffeurRep.findAll();
 		assertEquals(list.size(), list.size());

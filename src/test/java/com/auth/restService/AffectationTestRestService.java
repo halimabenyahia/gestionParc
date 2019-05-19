@@ -59,7 +59,7 @@ public class AffectationTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			AffectationVehicule foundAffectation = affectationService.getAffectationParam(affectation.getDes_affectation());
+			AffectationVehicule foundAffectation = affectationService.getAffectationObj(affectation.getDes_affectation());
 			assertNotNull(foundAffectation);
 			assertEquals(foundAffectation.getDes_affectation(), affectation.getDes_affectation());
 
@@ -82,7 +82,7 @@ public class AffectationTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			AffectationVehicule affectationFound = affectationService.getAffectationParam(affectation.getDes_affectation());
+			AffectationVehicule affectationFound = affectationService.getAffectationObj(affectation.getDes_affectation());
 			assertNotNull(affectationFound);
 			assertEquals(affectationFound.getDes_affectation(), affectation.getDes_affectation());
 		} catch (Exception e) {
@@ -103,7 +103,7 @@ public class AffectationTestRestService extends TestParcRestController {
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
-			AffectationVehicule affectationFound = affectationService.getAffectationParam(affectation.getDes_affectation());
+			AffectationVehicule affectationFound = affectationService.getAffectationObj(affectation.getDes_affectation());
 			assertEquals(null, affectationFound);
 
 		} catch (Exception e) {

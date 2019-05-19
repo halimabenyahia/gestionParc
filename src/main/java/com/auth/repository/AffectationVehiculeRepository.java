@@ -11,6 +11,8 @@ import com.auth.entitie.AffectationVehicule;
 public interface AffectationVehiculeRepository extends JpaRepository<AffectationVehicule, Integer> {
 	
 	@Query("select m from AffectationVehicule m where m.des_affectation like :parametre")
-	public AffectationVehicule findByAffectationParam(@Param("parametre") String parametre) ;
+	public List<AffectationVehicule> findByAffectationParam(@Param("parametre") String parametre) ;
 
+	@Query("select m from AffectationVehicule m where m.des_affectation like :parametre")
+	public AffectationVehicule findByAffectationVehicule(@Param("parametre") String parametre) ;
 }
