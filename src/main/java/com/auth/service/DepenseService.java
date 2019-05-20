@@ -33,10 +33,16 @@ public class DepenseService {
 		return jan;
 	}
 	
-//	public Long getSumByType(String param1,int mois , String param2) {
-//		Long sum = depenseRep.findSumDepByType(param1, mois, param2);
-//		return sum ;
-//	}
+	
+	public Long getResultByType(String matricule , int mois , String type) {
+		Long result = new Long(0);
+		try {
+			 result = depenseRep.getAllMonthByType(matricule, mois, type);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result ;
+	}
 
 	public List<DepenseResponse> listeDepenses() {
 		LinkedList<DepenseResponse> l = new LinkedList<DepenseResponse>();
@@ -76,24 +82,24 @@ public class DepenseService {
 		return l;
 	}
 
-	public List<DepenseResponse> oneDepense(String matricule) {
+	public List<DepenseResponse> oneDepense(String matricule,String type) {
 		LinkedList<DepenseResponse> l = new LinkedList<DepenseResponse>();
 		Vehicule v = vehiculeRep.findByImmV(matricule);
 		
 		DepenseResponse d = new DepenseResponse();
 		d.setImmatriculation(v.getImmatriculation());
-		d.setDep_janvier(getSumMonth(v.getImmatriculation(), 01));
-		d.setDep_fevrier(getSumMonth(v.getImmatriculation(), 02));
-		d.setDep_mars(getSumMonth(v.getImmatriculation(), 03));
-		d.setDep_avril(getSumMonth(v.getImmatriculation(), 04));
-		d.setDep_mai(getSumMonth(v.getImmatriculation(), 05));
-		d.setDep_juin(getSumMonth(v.getImmatriculation(), 06));
-		d.setDep_juillet(getSumMonth(v.getImmatriculation(), 07));
-		d.setDep_aout(getSumMonth(v.getImmatriculation(), 8));
-		d.setDep_septembre(getSumMonth(v.getImmatriculation(), 9));
-		d.setDep_octobre(getSumMonth(v.getImmatriculation(), 10));
-		d.setDep_novembre(getSumMonth(v.getImmatriculation(), 11));
-		d.setDep_decembre(getSumMonth(v.getImmatriculation(), 12));
+		d.setDep_janvier(getResultByType(v.getImmatriculation(), 01, type));
+		d.setDep_fevrier(getResultByType(v.getImmatriculation(), 02 , type));
+		d.setDep_mars(getResultByType(v.getImmatriculation(), 03, type));
+		d.setDep_avril(getResultByType(v.getImmatriculation(), 04, type));
+		d.setDep_mai(getResultByType(v.getImmatriculation(), 05, type));
+		d.setDep_juin(getResultByType(v.getImmatriculation(), 06, type));
+		d.setDep_juillet(getResultByType(v.getImmatriculation(), 07, type));
+		d.setDep_aout(getResultByType(v.getImmatriculation(), 8, type));
+		d.setDep_septembre(getResultByType(v.getImmatriculation(), 9, type));
+		d.setDep_octobre(getResultByType(v.getImmatriculation(), 10, type));
+		d.setDep_novembre(getResultByType(v.getImmatriculation(), 11, type));
+		d.setDep_decembre(getResultByType(v.getImmatriculation(), 12, type));
 
 		l.add(d);
 		return l;

@@ -1,11 +1,7 @@
 package com.auth.repository;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.auth.entitie.Depense;
 import com.auth.entitie.DepenseResponse;
-import com.auth.entitie.Vehicule;
 
 public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 
@@ -25,12 +20,14 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 	@Query(q + matricule)
 	public Long getAllMonths(@PathVariable String matricule, @PathVariable int mois);
 	
-//	@Query("select SUM(d.ttc) from Depense d where d.vehicule_dep.immatriculation  =:param1 "
-//			+ "and MONTH(d.date_depense) = :mois"
-//			+ "and d.type_depense = :param2")
-//	public Long findSumDepByType(@PathVariable String param1,@PathVariable int mois , @PathVariable String param2);
 
 	@Query("select v from Depense v where v.type_depense like :parametre")
 	public Depense getdepenseByTtype(@Param("parametre") String parametre);
+	
+	String q1 = "select dep.ttc from Depense dep where MONTH(dep.date_depense) = :mois ";
+	String matricule1 = " and dep.vehicule_dep.immatriculation  =:matricule";
+	String t = " and dep.type_depense =:type" ;
+	@Query(q1 + matricule1 + t)
+	public Long getAllMonthByType(@PathVariable String matricule, @PathVariable int mois, @PathVariable String type);
  
 }
