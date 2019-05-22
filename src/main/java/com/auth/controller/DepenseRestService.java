@@ -63,14 +63,9 @@ public class DepenseRestService {
 		return depenseRep.getbyImmatricul("%"+parametre);
 	}
 	
-	@RequestMapping(value="/depenseBytype/{parametre}",method=RequestMethod.GET)
-	public Depense getDepenseByTypeD(@PathVariable String parametre){
-		return depenseRep.getdepenseByTtype("%"+parametre);
-	}
-	
-	@RequestMapping(value="/sumdepenseByimm/{parametre}/{type}",method=RequestMethod.GET)
-	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre,@PathVariable String type){
-		return depenseService.oneDepense("%"+parametre,"%"+type);
+	@RequestMapping(value="/sumdepenseByimm/{parametre}",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre){
+		return depenseService.oneDepense(parametre);
 	}
 	
 

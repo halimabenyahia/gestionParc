@@ -20,14 +20,11 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 	@Query(q + matricule)
 	public Long getAllMonths(@PathVariable String matricule, @PathVariable int mois);
 	
-
-	@Query("select v from Depense v where v.type_depense like :parametre")
-	public Depense getdepenseByTtype(@Param("parametre") String parametre);
 	
 	String q1 = "select dep.ttc from Depense dep where MONTH(dep.date_depense) = :mois ";
 	String matricule1 = " and dep.vehicule_dep.immatriculation  =:matricule";
-	String t = " and dep.type_depense =:type" ;
-	@Query(q1 + matricule1 + t)
-	public Long getAllMonthByType(@PathVariable String matricule, @PathVariable int mois, @PathVariable String type);
+//	String t = " and dep.type_depense  =:type " ;
+	@Query(q1 + matricule1 )
+	public Long getAllMonthByType(@PathVariable String matricule, @PathVariable int mois);
  
 }

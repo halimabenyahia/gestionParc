@@ -32,7 +32,7 @@ public class Depense {
 	private Date date_caisse ;
 	private String reference_d ;
 	private String compteur_d ;
-	private String type_depense ;
+	
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -58,6 +58,11 @@ public class Depense {
 	@JoinColumn(name="id_depenseCar")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private DepenseCarburant depense_carburant ;
+	
+	@OneToOne
+	@JoinColumn(name="id_typeDepense")
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private TypeDepense typedepense ;
 
 	public int getId_depense() {
 		return id_depense;
@@ -150,16 +155,6 @@ public class Depense {
 	public void setCompteur_d(String compteur_d) {
 		this.compteur_d = compteur_d;
 	}
-	
-	
-
-	public String getType_depense() {
-		return type_depense;
-	}
-
-	public void setType_depense(String type_depense) {
-		this.type_depense = type_depense;
-	}
 
 
 	public Vehicule getVehicule_dep() {
@@ -168,6 +163,14 @@ public class Depense {
 
 	public void setVehicule_dep(Vehicule vehicule_dep) {
 		this.vehicule_dep = vehicule_dep;
+	}	
+
+	public TypeDepense getTypedepense() {
+		return typedepense;
+	}
+
+	public void setTypedepense(TypeDepense typedepense) {
+		this.typedepense = typedepense;
 	}
 
 	public Depense() {
@@ -177,7 +180,8 @@ public class Depense {
 
 	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc,
 			Date date_caisse, String reference_d, Fournisseur fournisseur_d, Piece piece_d,
-			DepenseCarburant depense_carburant, String compteur_d , String type_depense , Vehicule vehicule_dep) {
+			DepenseCarburant depense_carburant, String compteur_d  , Vehicule vehicule_dep ,
+			TypeDepense typedepense) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
@@ -190,8 +194,8 @@ public class Depense {
 		this.piece_d = piece_d;
 		this.depense_carburant = depense_carburant;
 		this.compteur_d = compteur_d;
-		this.type_depense = type_depense ;
 		this.vehicule_dep = vehicule_dep ;
+		this.typedepense = typedepense ;
 	}
 
 }
