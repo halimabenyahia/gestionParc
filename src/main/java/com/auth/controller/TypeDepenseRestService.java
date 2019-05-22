@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.entitie.TypeDepense;
+import com.auth.entitie.TypeVehicule;
 import com.auth.repository.TypeDepenseRepository;
 
 @RestController
@@ -45,6 +46,11 @@ public class TypeDepenseRestService  {
 	@RequestMapping(value="/editTypeDepense",method=RequestMethod.PUT)
 	public TypeDepense editTypeDepense(@RequestBody TypeDepense c){
 		 return typeDepenseRep.save(c);
+	}
+	
+	@RequestMapping(value="/typedepenseByParam/{parametre}",method=RequestMethod.GET)
+	public List<TypeDepense> getTypedepenseParam(@PathVariable String parametre){
+		return typeDepenseRep.findByTypeDepenseParam("%"+parametre+"%");
 	}
 
 }

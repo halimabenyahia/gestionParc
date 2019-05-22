@@ -1,10 +1,13 @@
 package com.auth.entitie;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -20,6 +23,9 @@ public class Piece {
 	private Long qte_p ;
 	private Long remise_p ;
 	
+	
+	
+	
 	@OneToOne
 	@JoinColumn(name="id_typePiece")
 	private TypePiece type_piece_p ;
@@ -31,6 +37,10 @@ public class Piece {
 	@ManyToOne
 	@JoinColumn(name="id_sortieStock")
 	private SortieStock sortie_stock ;
+	
+	@ManyToMany(mappedBy="pieces")
+	Set<Depense> depenses ;
+	
 
 	public int getId_piece() {
 		return id_piece;
@@ -112,8 +122,18 @@ public class Piece {
 		this.sortie_stock = sortie_stock;
 	}
 
+	public Set<Depense> getDepenses() {
+		return depenses;
+	}
+
+	public void setDepenses(Set<Depense> depenses) {
+		this.depenses = depenses;
+	}
+
+	
 	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat, Long qte_p,
-			Long remise_p, TypePiece type_piece_p, EntreeStock entre_stock, SortieStock sortie_stock) {
+			Long remise_p, TypePiece type_piece_p, EntreeStock entre_stock, SortieStock sortie_stock,
+			Set<Depense> depenses) {
 		super();
 		this.id_piece = id_piece;
 		this.reference_piece = reference_piece;
@@ -125,6 +145,7 @@ public class Piece {
 		this.type_piece_p = type_piece_p;
 		this.entre_stock = entre_stock;
 		this.sortie_stock = sortie_stock;
+		this.depenses = depenses;
 	}
 
 	public Piece() {

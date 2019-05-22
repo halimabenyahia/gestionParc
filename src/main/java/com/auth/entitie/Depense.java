@@ -1,12 +1,16 @@
 package com.auth.entitie;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -33,7 +37,6 @@ public class Depense {
 	private String reference_d ;
 	private String compteur_d ;
 	
-	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
 	private Vehicule vehicule_dep ;
@@ -43,26 +46,17 @@ public class Depense {
 	    this.vehicule_dep = new Vehicule();
 	    vehicule_dep.setId_vehicule(id_vehicule);
 	}
-
-	@ManyToOne
-	@JoinColumn(name="id_fournisseur")
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	private Fournisseur fournisseur_d ;
-	
-	@ManyToOne
-	@JoinColumn(name="id_piece")
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	private Piece piece_d ;
-	
-	@OneToOne
-	@JoinColumn(name="id_depenseCar")
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	private DepenseCarburant depense_carburant ;
 	
 	@OneToOne
 	@JoinColumn(name="id_typeDepense")
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private TypeDepense typedepense ;
+	
+	@ManyToMany
+	@JoinTable(name="Association",joinColumns= @JoinColumn(name="id_depense"),
+	                inverseJoinColumns=@JoinColumn(name="id_piece"))
+	Set<Piece> pieces = new HashSet<Piece>();
+	
 
 	public int getId_depense() {
 		return id_depense;
@@ -121,33 +115,6 @@ public class Depense {
 		this.reference_d = reference_d;
 	}
 
-
-	public Fournisseur getFournisseur_d() {
-		return fournisseur_d;
-	}
-
-	public void setFournisseur_d(Fournisseur fournisseur_d) {
-		this.fournisseur_d = fournisseur_d;
-	}
-
-	public Piece getPiece_d() {
-		return piece_d;
-	}
-
-	public void setPiece_d(Piece piece_d) {
-		this.piece_d = piece_d;
-	}
-
-	public DepenseCarburant getDepense_carburant() {
-		return depense_carburant;
-	}
-
-	public void setDepense_carburant(DepenseCarburant depense_carburant) {
-		this.depense_carburant = depense_carburant;
-	}
-	
-	
-
 	public String getCompteur_d() {
 		return compteur_d;
 	}
@@ -172,16 +139,24 @@ public class Depense {
 	public void setTypedepense(TypeDepense typedepense) {
 		this.typedepense = typedepense;
 	}
+	
+	public Set<Piece> getPieces() {
+		return pieces;
+	}
+
+	public void setPieces(Set<Piece> pieces) {
+		this.pieces = pieces;
+	}
+	
+	
 
 	public Depense() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc,
-			Date date_caisse, String reference_d, Fournisseur fournisseur_d, Piece piece_d,
-			DepenseCarburant depense_carburant, String compteur_d  , Vehicule vehicule_dep ,
-			TypeDepense typedepense) {
+	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc, Date date_caisse,
+			String reference_d, String compteur_d, Vehicule vehicule_dep, TypeDepense typedepense, Set<Piece> pieces) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
@@ -190,12 +165,10 @@ public class Depense {
 		this.ttc = ttc;
 		this.date_caisse = date_caisse;
 		this.reference_d = reference_d;
-		this.fournisseur_d = fournisseur_d;
-		this.piece_d = piece_d;
-		this.depense_carburant = depense_carburant;
 		this.compteur_d = compteur_d;
-		this.vehicule_dep = vehicule_dep ;
-		this.typedepense = typedepense ;
+		this.vehicule_dep = vehicule_dep;
+		this.typedepense = typedepense;
+		this.pieces = pieces;
 	}
 
 }

@@ -53,11 +53,11 @@ public class Marque {
 		this.modele_m = modele_m;
 	}
 
-	public Marque(int id_marque, String des_marque, Modele modele_m) {
+	public Marque(int id_marque, String des_marque , Modele modele_m) {
 		super();
 		this.id_marque = id_marque;
 		this.des_marque = des_marque;
-		this.modele_m = modele_m;
+		this.modele_m = modele_m ;
 	}
 
 	public Marque() {

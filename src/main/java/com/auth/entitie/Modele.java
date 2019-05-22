@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Modele {
@@ -12,7 +14,6 @@ public class Modele {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_modele ;
 	private String des_modele ;
-	
 	
 	public int getId_modele() {
 		return id_modele;
@@ -26,6 +27,7 @@ public class Modele {
 	public void setDes_modele(String des_modele) {
 		this.des_modele = des_modele;
 	}
+	
 	public Modele(int id_modele, String des_modele) {
 		super();
 		this.id_modele = id_modele;

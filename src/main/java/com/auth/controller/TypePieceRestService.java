@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.entitie.Modele;
 import com.auth.entitie.TypePiece;
 import com.auth.repository.TypePieceRepository;
 
@@ -45,6 +46,11 @@ public class TypePieceRestService {
 	@RequestMapping(value="/editTypePiece",method=RequestMethod.PUT)
 	public TypePiece edittypePiece(@RequestBody TypePiece c){
 		 return typePieceRep.save(c);
+	}
+	
+	@RequestMapping(value="/typePieceByParam/{parametre}",method=RequestMethod.GET)
+	public List<TypePiece> getTypePieceParam(@PathVariable String parametre){
+		return typePieceRep.findByTypePieceParam("%"+parametre+"%");
 	}
 	
 
