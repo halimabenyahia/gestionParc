@@ -52,11 +52,16 @@ public class Depense {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private TypeDepense typedepense ;
 	
+	@JsonProperty("id_typeDepense")
+	private void unpackTypeDep(Integer id_typeDepense) {
+	    this.typedepense = new TypeDepense();
+	    typedepense.setId_typeDepense(id_typeDepense);
+	}
+	
 	@ManyToMany
 	@JoinTable(name="Association",joinColumns= @JoinColumn(name="id_depense"),
 	                inverseJoinColumns=@JoinColumn(name="id_piece"))
 	Set<Piece> pieces = new HashSet<Piece>();
-	
 
 	public int getId_depense() {
 		return id_depense;

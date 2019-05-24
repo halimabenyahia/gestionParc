@@ -1,5 +1,7 @@
 package com.auth.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.entitie.TypeDepense;
 import com.auth.entitie.User;
 import com.auth.entitie.UserResponse;
+import com.auth.repository.UserRepository;
 import com.auth.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -32,6 +37,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserRepository userRep ;
 
 	@PostMapping("/signin")
 	@ApiOperation(value = "${UserController.signin}")
@@ -95,6 +103,11 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_AGENT')")
 	public String refresh(HttpServletRequest req) {
 		return userService.refresh(req.getRemoteUser());
+	}
+	
+	@RequestMapping(value="/userss",method=RequestMethod.GET)
+	public List<User> getAllUser(){
+		return userRep.findAll();
 	}
 
 }

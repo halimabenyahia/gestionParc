@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.entitie.Piece;
+import com.auth.entitie.Vehicule;
 import com.auth.repository.PieceRepository;
 
 @RestController
@@ -48,18 +49,9 @@ public class PieceRestService {
 		 return pieceRep.save(c);
 	}
 	
-//	@RequestMapping(value="/pieceBytype",method=RequestMethod.GET)
-//	public Piece getByIdPiecet(){
-//		return pieceRep.findbyTypeP();
-//	}
-//	
-//	@RequestMapping(value="/piecesbyent",method=RequestMethod.GET)
-//	public Piece getAllPiece1(){
-//		return pieceRep.findByEntree();
-//	}
-//	@RequestMapping(value="/piecesbysort",method=RequestMethod.GET)
-//	public Piece getAllPiece2(){
-//		return pieceRep.findBySortie();
-//	}
+	@RequestMapping(value="/piecebyDes/{designation}",method=RequestMethod.GET)
+	public Piece getbyDespiece(@PathVariable String designation) {
+		return pieceRep.findbyDesPiece(designation);
+	}
 
 }

@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Piece {
 	
@@ -19,16 +21,21 @@ public class Piece {
 	private String reference_piece ;
 	private String des_piece ;
 	private Long tva_p ;
-	private Long prix_achat ;
+	private Long prix_achat ; // PU
 	private Long qte_p ;
 	private Long remise_p ;
-	
-	
-	
+	private Long montant_hors_taxe ;
+	private Long ttc_p ;
 	
 	@OneToOne
 	@JoinColumn(name="id_typePiece")
 	private TypePiece type_piece_p ;
+	
+	@JsonProperty("id_typePiece")
+	private void unpackTypepiece(Integer id_typePiece) {
+	    this.type_piece_p = new TypePiece();
+	    type_piece_p.setId_typePiece(id_typePiece);
+	}
 	
 	@ManyToOne
 	@JoinColumn(name="id_entree")
@@ -40,7 +47,6 @@ public class Piece {
 	
 	@ManyToMany(mappedBy="pieces")
 	Set<Depense> depenses ;
-	
 
 	public int getId_piece() {
 		return id_piece;
@@ -129,11 +135,26 @@ public class Piece {
 	public void setDepenses(Set<Depense> depenses) {
 		this.depenses = depenses;
 	}
-
 	
+	public Long getMontant_hors_taxe() {
+		return montant_hors_taxe;
+	}
+
+	public void setMontant_hors_taxe(Long montant_hors_taxe) {
+		this.montant_hors_taxe = montant_hors_taxe;
+	}
+
+	public Long getTtc_p() {
+		return ttc_p;
+	}
+
+	public void setTtc_p(Long ttc_p) {
+		this.ttc_p = ttc_p;
+	}
+
 	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat, Long qte_p,
 			Long remise_p, TypePiece type_piece_p, EntreeStock entre_stock, SortieStock sortie_stock,
-			Set<Depense> depenses) {
+			Set<Depense> depenses , Long montant_hors_taxe , Long ttc_p) {
 		super();
 		this.id_piece = id_piece;
 		this.reference_piece = reference_piece;
@@ -146,6 +167,8 @@ public class Piece {
 		this.entre_stock = entre_stock;
 		this.sortie_stock = sortie_stock;
 		this.depenses = depenses;
+		this.montant_hors_taxe = montant_hors_taxe ;
+		this.ttc_p = ttc_p ;
 	}
 
 	public Piece() {
