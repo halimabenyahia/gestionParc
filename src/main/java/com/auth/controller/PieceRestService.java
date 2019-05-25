@@ -50,8 +50,8 @@ public class PieceRestService {
 	}
 	
 	@RequestMapping(value="/piecebyDes/{designation}",method=RequestMethod.GET)
-	public Piece getbyDespiece(@PathVariable String designation) {
-		return pieceRep.findbyDesPiece(designation);
+	public List<Piece> getbyDespiece(@PathVariable String designation) {
+		return pieceRep.findbyDesPiece("%"+designation+"%");
 	}
 
 }

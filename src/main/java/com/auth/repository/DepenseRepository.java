@@ -26,5 +26,8 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 //	String t = " and dep.type_depense  =:type " ;
 	@Query(q1 + matricule1 )
 	public Long getAllMonthByType(@PathVariable String matricule, @PathVariable int mois);
+	
+	
+	
  
 }
