@@ -62,6 +62,12 @@ public class Depense {
 	@JoinTable(name="Association",joinColumns= @JoinColumn(name="id_depense"),
 	                inverseJoinColumns=@JoinColumn(name="id_piece"))
 	Set<Piece> pieces = new HashSet<Piece>();
+	
+	@JsonProperty("id_piece")
+	private Set<Piece >unpackPiece(Integer id_piece) {
+	    this.pieces = new Piece();
+	    pieces..setId_typeDepense(id_typeDepense);
+	}
 
 	public int getId_depense() {
 		return id_depense;
