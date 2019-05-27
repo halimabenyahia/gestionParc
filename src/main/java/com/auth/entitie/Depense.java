@@ -64,9 +64,9 @@ public class Depense {
 	Set<Piece> pieces = new HashSet<Piece>();
 	
 	@JsonProperty("id_piece")
-	private Set<Piece >unpackPiece(Integer id_piece) {
-	    this.pieces = new Piece();
-	    pieces..setId_typeDepense(id_typeDepense);
+	private void unpackPiece(Integer id_piece) {
+	    this.pieces = new HashSet<Piece>();
+	   // pieces.s;
 	}
 
 	public int getId_depense() {

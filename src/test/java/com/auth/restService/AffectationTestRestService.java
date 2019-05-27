@@ -58,7 +58,7 @@ public class AffectationTestRestService extends TestParcRestController {
 			mvcResult = mvc.perform(MockMvcRequestBuilders.post("/addAffectation")
 					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 			int status = mvcResult.getResponse().getStatus();
-			assertEquals(200, status);
+			assertEquals(201, status);
 			AffectationVehicule foundAffectation = affectationService.getAffectationObj(affectation.getDes_affectation());
 			assertNotNull(foundAffectation);
 			assertEquals(foundAffectation.getDes_affectation(), affectation.getDes_affectation());

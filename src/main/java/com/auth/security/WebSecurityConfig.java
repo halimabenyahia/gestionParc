@@ -16,6 +16,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
@@ -40,12 +43,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/users/signin").permitAll()//
 				.antMatchers("/users/signup").permitAll()//
 			//	.antMatchers("/h2-console/**/**").permitAll()
-				.antMatchers("/*").permitAll()
+				//.antMatchers("/*").permitAll()
 				// Disallow everything else..
 				.anyRequest().authenticated();
 
 		// If a user try to access a resource without having enough permissions
-		http.exceptionHandling().accessDeniedPage("/*");
+		http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
 
 		// Apply JWT
 		http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
