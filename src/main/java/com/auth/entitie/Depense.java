@@ -63,11 +63,11 @@ public class Depense {
 	                inverseJoinColumns=@JoinColumn(name="id_piece"))
 	Set<Piece> pieces = new HashSet<Piece>();
 	
-	@JsonProperty("id_piece")
-	private void unpackPiece(Integer id_piece) {
-	    this.pieces = new HashSet<Piece>();
-	   // pieces.s;
-	}
+//	@JsonProperty("id_piece")
+//	private void unpackPiece(Integer id_piece) {
+//	    this.pieces = new HashSet<Piece>();
+//	   // pieces.s;
+//	}
 
 	public int getId_depense() {
 		return id_depense;
@@ -158,8 +158,6 @@ public class Depense {
 	public void setPieces(Set<Piece> pieces) {
 		this.pieces = pieces;
 	}
-	
-	
 
 	public Depense() {
 		super();

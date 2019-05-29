@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -15,6 +16,7 @@ import com.auth.entitie.Chauffeurs;
 import com.test.TestParc;
 import com.test.TestParcRestController;
 
+@SpringBootTest
 public class AffectationTestRestService extends TestParcRestController {
 	
 	AffectationVehiculeRestService affectationService ;

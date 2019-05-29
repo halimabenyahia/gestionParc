@@ -19,5 +19,13 @@ public class DBConfiguration {
 		System.out.println(driverClassName);
 		return "DB Connection for H2";
 	}
+	
+	@Profile("dev")
+	@Bean
+	public String devDataBaseConnection() {
+		System.out.println("connection to mysql");
+		System.out.println(driverClassName);
+		return "DB Connection for Mysql";
+	}
 
 }

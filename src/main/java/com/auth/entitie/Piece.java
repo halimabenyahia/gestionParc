@@ -46,7 +46,13 @@ public class Piece {
 	private SortieStock sortie_stock ;
 	
 	@ManyToMany(mappedBy="pieces")
-	Set<Depense> depenses ;
+	private Set<Depense> depenses ;
+	
+//	@JsonProperty("id_depense")
+//	private Set<Depense> unpackDepense(Integer id_depense) {
+//	    this.depenses = new Depense();
+//	    //depenses;
+//	}
 
 	public int getId_piece() {
 		return id_piece;
