@@ -53,5 +53,10 @@ public class PieceRestService {
 	public List<Piece> getbyDespiece(@PathVariable String designation) {
 		return pieceRep.findbyDesPiece("%"+designation+"%");
 	}
+	
+	@RequestMapping(value="/sumPiece",method=RequestMethod.GET)
+	public Long getSumPiece() {
+		return pieceRep.getSumPiece();
+	}
 
 }

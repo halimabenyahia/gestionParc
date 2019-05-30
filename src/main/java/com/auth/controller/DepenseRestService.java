@@ -68,5 +68,10 @@ public class DepenseRestService {
 		return depenseService.oneDepense(parametre);
 	}
 	
+	@RequestMapping(value="/montantTotal",method=RequestMethod.GET)
+	public Long getSum(){
+		return depenseRep.montantTotal();
+	}
+	
 
 }

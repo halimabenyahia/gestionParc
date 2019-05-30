@@ -1,5 +1,6 @@
 package com.auth.entitie;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -48,11 +49,11 @@ public class Piece {
 	@ManyToMany(mappedBy="pieces")
 	private Set<Depense> depenses ;
 	
-//	@JsonProperty("id_depense")
-//	private Set<Depense> unpackDepense(Integer id_depense) {
-//	    this.depenses = new Depense();
-//	    //depenses;
-//	}
+	@JsonProperty("id_depense")
+	private void unpackDepense(Integer id_depense) {
+	    this.depenses = new HashSet<Depense>();
+	    //depenses.
+	}
 
 	public int getId_piece() {
 		return id_piece;
