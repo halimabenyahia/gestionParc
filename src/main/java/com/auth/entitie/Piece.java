@@ -26,7 +26,7 @@ public class Piece {
 	private Long qte_p ;
 	private Long remise_p ;
 	private Long montant_hors_taxe ;
-	private Long ttc_p ;
+	private Long montant_ttc ;
 	
 	@OneToOne
 	@JoinColumn(name="id_typePiece")
@@ -151,17 +151,19 @@ public class Piece {
 		this.montant_hors_taxe = montant_hors_taxe;
 	}
 
-	public Long getTtc_p() {
-		return ttc_p;
+
+	public Long getMontant_ttc() {
+		return montant_ttc;
 	}
 
-	public void setTtc_p(Long ttc_p) {
-		this.ttc_p = ttc_p;
+	public void setMontant_ttc(Long montant_ttc) {
+		this.montant_ttc = montant_ttc;
 	}
 
+	
 	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat, Long qte_p,
-			Long remise_p, TypePiece type_piece_p, EntreeStock entre_stock, SortieStock sortie_stock,
-			Set<Depense> depenses , Long montant_hors_taxe , Long ttc_p) {
+			Long remise_p, Long montant_hors_taxe, Long montant_ttc, TypePiece type_piece_p, EntreeStock entre_stock,
+			SortieStock sortie_stock, Set<Depense> depenses) {
 		super();
 		this.id_piece = id_piece;
 		this.reference_piece = reference_piece;
@@ -170,12 +172,12 @@ public class Piece {
 		this.prix_achat = prix_achat;
 		this.qte_p = qte_p;
 		this.remise_p = remise_p;
+		this.montant_hors_taxe = montant_hors_taxe;
+		this.montant_ttc = montant_ttc;
 		this.type_piece_p = type_piece_p;
 		this.entre_stock = entre_stock;
 		this.sortie_stock = sortie_stock;
 		this.depenses = depenses;
-		this.montant_hors_taxe = montant_hors_taxe ;
-		this.ttc_p = ttc_p ;
 	}
 
 	public Piece() {

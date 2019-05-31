@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.auth.profil.config.DBConfiguration;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DBConfiguration.class)
+@SpringBootTest()
 public class TestAuthApplicationTests {
 
 	@Test
