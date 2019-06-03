@@ -41,7 +41,7 @@ public class ModeleRestService {
 		modeleRep.deleteById(id);
 		 return true;
 	}
-	
+	 
 	@RequestMapping(value="/editModele",method=RequestMethod.PUT)
 	public Modele editModele(@RequestBody Modele c){
 		 return modeleRep.save(c);
