@@ -101,7 +101,7 @@ public class Vehicule {
 	@JsonProperty("id_marque")
 	private void unpackmarque(Integer id_marque) {
 	    this.marque_v = new Marque();
-	    marque_v.setId_marque(id_marque);;
+	    marque_v.setId_marque(id_marque);
 	}
 	
 	

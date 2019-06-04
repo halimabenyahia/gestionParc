@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class ProgrammeEntretien {
 	
@@ -26,6 +28,12 @@ public class ProgrammeEntretien {
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
 	private Vehicule vehicule_entretien ;
+	
+	@JsonProperty("id_vehicule")
+	private void unpackvehcule(Integer id_vehicule) {
+	    this.vehicule_entretien = new Vehicule();
+	    vehicule_entretien.setId_vehicule(id_vehicule);
+	}
 	
 
 //	

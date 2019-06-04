@@ -52,5 +52,10 @@ public class TypeDepenseRestService  {
 	public List<TypeDepense> getTypedepenseParam(@PathVariable String parametre){
 		return typeDepenseRep.findByTypeDepenseParam("%"+parametre+"%");
 	}
+	
+	@RequestMapping(value="/typedepenseByDesi/{parametre}",method=RequestMethod.GET)
+	public TypeDepense getTypedepenseDes(@PathVariable String parametre){
+		return typeDepenseRep.findByTypeDepense("%"+parametre+"%");
+	}
 
 }

@@ -13,5 +13,8 @@ public interface TypeDepenseRepository extends JpaRepository<TypeDepense, Intege
 	
 	@Query("select t from TypeDepense t where t.designation_typeDep like :parametre")
 	public List<TypeDepense> findByTypeDepenseParam(@Param("parametre") String parametre) ;
+	
+	@Query("select t from TypeDepense t where t.designation_typeDep like :parametre")
+	public TypeDepense findByTypeDepense(@Param("parametre") String parametre) ;
 
 }

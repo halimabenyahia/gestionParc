@@ -13,4 +13,7 @@ public interface TypePieceRepository extends JpaRepository<TypePiece, Integer> {
 	@Query("select t from TypePiece t where t.des_typePiece like :parametre")
 	public List<TypePiece> findByTypePieceParam(@Param("parametre") String parametre) ;
 
+	
+	@Query("select t from TypePiece t where t.des_typePiece like :parametre")
+	public TypePiece findByTypePiece(@Param("parametre") String parametre) ;
 }

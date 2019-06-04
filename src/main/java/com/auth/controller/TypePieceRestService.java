@@ -53,5 +53,10 @@ public class TypePieceRestService {
 		return typePieceRep.findByTypePieceParam("%"+parametre+"%");
 	}
 	
+	@RequestMapping(value="/typePieceByD/{parametre}",method=RequestMethod.GET)
+	public TypePiece getTypePiecebyDes(@PathVariable String parametre){
+		return typePieceRep.findByTypePiece("%"+parametre+"%");
+	}
+	
 
 }
