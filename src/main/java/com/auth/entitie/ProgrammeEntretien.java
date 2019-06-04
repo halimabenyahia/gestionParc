@@ -24,6 +24,7 @@ public class ProgrammeEntretien {
 	private Boolean execution ;
 	@Temporal(TemporalType.DATE)
 	private Date date_execution ;
+	private String description ;
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -97,8 +98,16 @@ public class ProgrammeEntretien {
 		this.type_entretien = type_entretien;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public ProgrammeEntretien(int id_programme, Date date_prev_ent, Long compteur_e, Boolean execution,
-			Date date_execution, TypeEntretien type_entretien , Vehicule vehicule_entretien ) {
+			Date date_execution, TypeEntretien type_entretien , Vehicule vehicule_entretien,String description ) {
 		super();
 		this.id_programme = id_programme;
 		this.date_prev_ent = date_prev_ent;
@@ -107,6 +116,7 @@ public class ProgrammeEntretien {
 		this.date_execution = date_execution;
 		this.type_entretien = type_entretien;
 		this.vehicule_entretien = vehicule_entretien ;
+		this.description = description ;
 	}
 
 	public ProgrammeEntretien() {
