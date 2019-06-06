@@ -61,5 +61,10 @@ public class ChauffeursRestService {
 //	public List<Chauffeurs> getUserbyMatricule (@PathVariable String parametre){
 //		return chauffRep.findByMatricule(parametre);
 //	}
+	@RequestMapping(value="/nbChauffeur" , method=RequestMethod.GET)
+	public int getNombreChauffeur (){
+		return chauffRep.nbChauffeur();
+	}
+	
 
 }

@@ -28,7 +28,7 @@ public class ProgrammeEntretienRestService {
 	}
 
 	@RequestMapping(value="/programmeEntretiens/{id}",method=RequestMethod.GET)
-	public Optional<ProgrammeEntretien> getProgEntretiens(@PathVariable int id){
+	public Optional<ProgrammeEntretien> getProgEntretiensById(@PathVariable int id){
 		return progEntreRep.findById(id);
 	}
 	

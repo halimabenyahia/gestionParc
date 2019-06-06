@@ -25,6 +25,7 @@ public class ProgrammeEntretien {
 	@Temporal(TemporalType.DATE)
 	private Date date_execution ;
 	private String description ;
+	private Long montant_entretien ;
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -36,11 +37,15 @@ public class ProgrammeEntretien {
 	    vehicule_entretien.setId_vehicule(id_vehicule);
 	}
 	
-
-//	
 	@OneToOne
 	@JoinColumn(name="id_typeEntretien")
 	private TypeEntretien type_entretien ;
+	
+	@JsonProperty("id_typeEntretien")
+	private void unpacktypeentretien(Integer id_typeEntretien) {
+	    this.type_entretien = new TypeEntretien();
+	    type_entretien.setId_typeEntretien(id_typeEntretien);
+	}
 
 	public int getId_programme() {
 		return id_programme;
@@ -106,8 +111,16 @@ public class ProgrammeEntretien {
 		this.description = description;
 	}
 
+	public Long getMontant_entretien() {
+		return montant_entretien;
+	}
+
+	public void setMontant_entretien(Long montant_entretien) {
+		this.montant_entretien = montant_entretien;
+	}
+
 	public ProgrammeEntretien(int id_programme, Date date_prev_ent, Long compteur_e, Boolean execution,
-			Date date_execution, TypeEntretien type_entretien , Vehicule vehicule_entretien,String description ) {
+			Date date_execution, TypeEntretien type_entretien , Vehicule vehicule_entretien,String description ,Long montant_entretien) {
 		super();
 		this.id_programme = id_programme;
 		this.date_prev_ent = date_prev_ent;
@@ -117,6 +130,7 @@ public class ProgrammeEntretien {
 		this.type_entretien = type_entretien;
 		this.vehicule_entretien = vehicule_entretien ;
 		this.description = description ;
+		this.montant_entretien = montant_entretien ;
 	}
 
 	public ProgrammeEntretien() {

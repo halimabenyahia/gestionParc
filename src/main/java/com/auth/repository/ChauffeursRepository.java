@@ -20,5 +20,8 @@ public interface ChauffeursRepository extends JpaRepository<Chauffeurs, Integer>
 	
 //	@Query("select m from Chauffeurs m where m.matricule_ch like :parametre")
 //	public List<Chauffeurs> findByMatricule(@Param("parametre") String parametre) ;
+	
+	@Query("select COUNT(c.matricule_ch) from Chauffeurs c ")
+	public int nbChauffeur();
 
 }

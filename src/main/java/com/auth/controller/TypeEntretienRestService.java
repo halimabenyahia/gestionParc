@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.entitie.TypeEntretien;
+import com.auth.entitie.TypePiece;
 import com.auth.repository.TypeEntretienRepository;
 
 @RestController
@@ -46,6 +47,11 @@ public class TypeEntretienRestService {
 	@RequestMapping(value="/editTypeEntretien",method=RequestMethod.PUT)
 	public TypeEntretien editTypeEntretien(@RequestBody TypeEntretien c){
 		 return typeEntretienRep.save(c);
+	}
+	
+	@RequestMapping(value="/typeEntretienByDes/{parametre}",method=RequestMethod.GET)
+	public List<TypeEntretien> getTypeEntretienbyDes(@PathVariable String parametre){
+		return typeEntretienRep.findByTypeEntretien("%"+parametre+"%");
 	}
 	
 }
