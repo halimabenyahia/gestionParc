@@ -9,12 +9,14 @@ import java.util.Optional;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.auth.entitie.Chauffeurs;
 import com.test.TestParcRepository;
 
 /*tester persistance chauffeur*/
 @SpringBootTest
+@Transactional
 public class ChauffeurTestRepository extends TestParcRepository {
 
 	
@@ -45,8 +47,8 @@ public class ChauffeurTestRepository extends TestParcRepository {
 		savedchauffeur = chauffeurRep.save(savedchauffeur);
 		savedchauffeur.setNom_ch("ali");
 		savedchauffeur = chauffeurRep.save(savedchauffeur);
-	//	Chauffeurs foundChauffeurs = chauffeurRep.findById(savedchauffeur.getId_chauffeur());
-	//	assertEquals(foundChauffeurs.getNom_ch(), savedchauffeur.getNom_ch());
+		Chauffeurs foundChauffeurs = chauffeurRep.getOne(savedchauffeur.getId_chauffeur());
+		assertEquals(foundChauffeurs.getNom_ch(), savedchauffeur.getNom_ch());
 		
 	}
 	
@@ -71,7 +73,7 @@ public class ChauffeurTestRepository extends TestParcRepository {
 		savedChauffeurs.setNom_ch("ben yahia");
 		savedChauffeurs = chauffeurRep.save(savedChauffeurs);
 		List<Chauffeurs> list = chauffeurRep.findAll();
-		assertEquals(list.size(), list.size());
+		assertEquals(1, list.size());
 	}
 
 	@Test

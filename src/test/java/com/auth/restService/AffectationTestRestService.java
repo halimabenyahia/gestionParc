@@ -32,7 +32,7 @@ public class AffectationTestRestService extends TestParcRestController {
 	public void getAllEntityList() {
 		try {
 			AffectationVehicule affectation = new AffectationVehicule();
-			affectation.setDes_affectation("service");;
+			affectation.setDes_affectation("service");
 			affectationService.addAffectation(affectation);
 			mvcResult = mvc.perform(MockMvcRequestBuilders.get("/affectations").accept(MediaType.APPLICATION_JSON_VALUE))
 					.andReturn();

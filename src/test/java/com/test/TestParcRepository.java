@@ -1,5 +1,10 @@
 package com.test;
 
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+
+
 public abstract class TestParcRepository extends TestParc {
 	
 	//tester save
