@@ -17,8 +17,7 @@ public interface PieceRepository extends JpaRepository<Piece, Integer> {
 	@Query("select p from Piece p where p.des_piece  like :designation")
 	public Piece findbyDesignation(@Param("designation") String designation);
 	
-	@Query("select SUM(p.montant_ttc) from Piece p ")
-	public Long getSumPiece();
+	
 
 
 }

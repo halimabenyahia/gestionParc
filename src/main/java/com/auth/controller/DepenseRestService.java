@@ -26,10 +26,10 @@ public class DepenseRestService {
 	@Autowired
 	private DepenseService depenseService ;
 	
-	@RequestMapping(value="/depensesSum",method=RequestMethod.GET)
-	public List<DepenseResponse> getSumDepenses(){
-		return depenseService.listeDepenses(); 
-	}
+//	@RequestMapping(value="/depensesSum",method=RequestMethod.GET)
+//	public List<DepenseResponse> getSumDepenses(){
+//		return depenseService.listeDepenses(); 
+//	}
 	
 	@RequestMapping(value="/listdepenses",method=RequestMethod.GET)
 	public List<Depense> getDepenses(){
@@ -63,15 +63,15 @@ public class DepenseRestService {
 		return depenseRep.getbyImmatricul("%"+parametre);
 	}
 	
-	@RequestMapping(value="/sumdepenseByimm/{parametre}",method=RequestMethod.GET)
-	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre){
-		return depenseService.oneDepense(parametre);
-	}
-	
-	@RequestMapping(value="/montantTotal",method=RequestMethod.GET)
-	public Long getSum(){
-		return depenseRep.montantTotal();
-	}
+//	@RequestMapping(value="/sumdepenseByimm/{parametre}",method=RequestMethod.GET)
+//	public List<DepenseResponse> getSumDepenceByImm(@PathVariable String parametre){
+//		return depenseService.oneDepense(parametre);
+//	}
+//	
+//	@RequestMapping(value="/montantTotal",method=RequestMethod.GET)
+//	public Long getSum(){
+//		return depenseRep.montantTotal();
+//	}
 	
 
 }

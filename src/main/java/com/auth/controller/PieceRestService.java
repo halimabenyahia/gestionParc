@@ -59,9 +59,6 @@ public class PieceRestService {
 		return pieceRep.findbyDesignation("%"+designation+"%");
 	}
 	
-	@RequestMapping(value="/sumPiece",method=RequestMethod.GET)
-	public Long getSumPiece() {
-		return pieceRep.getSumPiece();
-	}
+	
 
 }

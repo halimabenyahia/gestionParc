@@ -54,4 +54,9 @@ public class TypeEntretienRestService {
 		return typeEntretienRep.findByTypeEntretien("%"+parametre+"%");
 	}
 	
+	@RequestMapping(value="/typeEntretienByDesTest/{parametre}",method=RequestMethod.GET)
+	public TypeEntretien getTypeEntretienbyDesiTest(@PathVariable String parametre){
+		return typeEntretienRep.findByTypeEntretienDes("%"+parametre+"%");
+	}
+	
 }

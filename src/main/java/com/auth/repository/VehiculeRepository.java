@@ -36,4 +36,16 @@ public interface VehiculeRepository extends JpaRepository<Vehicule, Integer> {
 	public int getNombreVehicule();
 	
 	
+	/*nbre de vehicule partner*/
+	@Query("select COUNT(v.immatriculation) from Vehicule v where v.type_vehicule.des_typeVehicule = 'partner' ")
+	public int getNombrePartner();
+	
+	/*nbre de vehicule camion*/
+	@Query("select COUNT(v.immatriculation) from Vehicule v where v.type_vehicule.des_typeVehicule = 'camion' ")
+	public int getNombreCamion();
+	
+	/*nbre de vehicule partner*/
+	@Query("select COUNT(v.immatriculation) from Vehicule v where v.type_vehicule.des_typeVehicule = 'voiture' ")
+	public int getNombreVoiture();
+	
 }

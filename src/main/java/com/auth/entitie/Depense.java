@@ -28,14 +28,15 @@ public class Depense {
 	private int id_depense ;
 	@Temporal(TemporalType.DATE)
 	private Date date_depense ;
-	private Long montant_ht ;
-	private Long tva ;
-	private Long ttc ;
-//	private boolean mvt_caisse ;
-	@Temporal(TemporalType.DATE)
-	private Date date_caisse ;
+	//private Long montant_ht ;
+	//private Long tva ;
+	//private Long ttc ;
+
+//	@Temporal(TemporalType.DATE)
+//	private Date date_caisse ;
 	private String reference_d ;
 	private String compteur_d ;
+	private String description_depense ;
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -85,38 +86,38 @@ public class Depense {
 		this.date_depense = date_depense;
 	}
 
-	public Long getMontant_ht() {
-		return montant_ht;
-	}
-
-	public void setMontant_ht(Long montant_ht) {
-		this.montant_ht = montant_ht;
-	}
-
-	public Long getTva() {
-		return tva;
-	}
-
-	public void setTva(Long tva) {
-		this.tva = tva;
-	}
-
-	public Long getTtc() {
-		return ttc;
-	}
-
-	public void setTtc(Long ttc) {
-		this.ttc = ttc;
-	}
-
-
-	public Date getDate_caisse() {
-		return date_caisse;
-	}
-
-	public void setDate_caisse(Date date_caisse) {
-		this.date_caisse = date_caisse;
-	}
+//	public Long getMontant_ht() {
+//		return montant_ht;
+//	}
+//
+//	public void setMontant_ht(Long montant_ht) {
+//		this.montant_ht = montant_ht;
+//	}
+//
+//	public Long getTva() {
+//		return tva;
+//	}
+//
+//	public void setTva(Long tva) {
+//		this.tva = tva;
+//	}
+//
+//	public Long getTtc() {
+//		return ttc;
+//	}
+//
+//	public void setTtc(Long ttc) {
+//		this.ttc = ttc;
+//	}
+//
+//
+//	public Date getDate_caisse() {
+//		return date_caisse;
+//	}
+//
+//	public void setDate_caisse(Date date_caisse) {
+//		this.date_caisse = date_caisse;
+//	}
 
 	public String getReference_d() {
 		return reference_d;
@@ -159,6 +160,14 @@ public class Depense {
 		this.pieces = pieces;
 	}
 
+	public String getDescription_depense() {
+		return description_depense;
+	}
+
+	public void setDescription_depense(String description_depense) {
+		this.description_depense = description_depense;
+	}
+
 	public Depense() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -169,10 +178,10 @@ public class Depense {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
-		this.montant_ht = montant_ht;
-		this.tva = tva;
-		this.ttc = ttc;
-		this.date_caisse = date_caisse;
+//		this.montant_ht = montant_ht;
+//		this.tva = tva;
+//		this.ttc = ttc;
+//		this.date_caisse = date_caisse;
 		this.reference_d = reference_d;
 		this.compteur_d = compteur_d;
 		this.vehicule_dep = vehicule_dep;

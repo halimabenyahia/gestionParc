@@ -13,5 +13,8 @@ public interface TypeEntretienRepository extends JpaRepository<TypeEntretien, In
 	
 	@Query("select t from TypeEntretien t where t.des_typeEntretien like :parametre")
 	public List<TypeEntretien> findByTypeEntretien(@Param("parametre") String parametre) ;
+	
+	@Query("select t from TypeEntretien t where t.des_typeEntretien like :parametre")
+	public TypeEntretien findByTypeEntretienDes(@Param("parametre") String parametre) ;
 
 }

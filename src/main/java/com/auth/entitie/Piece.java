@@ -22,11 +22,8 @@ public class Piece {
 	private String reference_piece ;
 	private String des_piece ;
 	private Long tva_p ;
-	private Long prix_achat ; // PU
-	private Long qte_p ;
-	private Long remise_p ;
-	private Long montant_hors_taxe ;
-	private Long montant_ttc ;
+	private Long prix_achat ; // prix unitaire
+	
 	
 	@OneToOne
 	@JoinColumn(name="id_typePiece")
@@ -95,22 +92,6 @@ public class Piece {
 		this.prix_achat = prix_achat;
 	}
 
-	public Long getQte_p() {
-		return qte_p;
-	}
-
-	public void setQte_p(Long qte_p) {
-		this.qte_p = qte_p;
-	}
-
-	public Long getRemise_p() {
-		return remise_p;
-	}
-
-	public void setRemise_p(Long remise_p) {
-		this.remise_p = remise_p;
-	}
-
 	public TypePiece getType_piece_p() {
 		return type_piece_p;
 	}
@@ -142,27 +123,9 @@ public class Piece {
 	public void setDepenses(Set<Depense> depenses) {
 		this.depenses = depenses;
 	}
-	
-	public Long getMontant_hors_taxe() {
-		return montant_hors_taxe;
-	}
-
-	public void setMontant_hors_taxe(Long montant_hors_taxe) {
-		this.montant_hors_taxe = montant_hors_taxe;
-	}
-
-
-	public Long getMontant_ttc() {
-		return montant_ttc;
-	}
-
-	public void setMontant_ttc(Long montant_ttc) {
-		this.montant_ttc = montant_ttc;
-	}
 
 	
-	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat, Long qte_p,
-			Long remise_p, Long montant_hors_taxe, Long montant_ttc, TypePiece type_piece_p, EntreeStock entre_stock,
+	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat,TypePiece type_piece_p, EntreeStock entre_stock,
 			SortieStock sortie_stock, Set<Depense> depenses) {
 		super();
 		this.id_piece = id_piece;
@@ -170,10 +133,6 @@ public class Piece {
 		this.des_piece = des_piece;
 		this.tva_p = tva_p;
 		this.prix_achat = prix_achat;
-		this.qte_p = qte_p;
-		this.remise_p = remise_p;
-		this.montant_hors_taxe = montant_hors_taxe;
-		this.montant_ttc = montant_ttc;
 		this.type_piece_p = type_piece_p;
 		this.entre_stock = entre_stock;
 		this.sortie_stock = sortie_stock;

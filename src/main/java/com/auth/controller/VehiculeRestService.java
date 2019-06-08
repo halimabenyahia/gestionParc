@@ -82,4 +82,19 @@ public class VehiculeRestService {
 		return vehiculeRep.getNombreVehicule();
 	}
 	
+	@RequestMapping(value="/nbPartner",method=RequestMethod.GET)
+	public int getNombreVehiculePartner() {
+		return vehiculeRep.getNombrePartner();
+	}
+	
+	@RequestMapping(value="/nbCamion",method=RequestMethod.GET)
+	public int getNombreVehiculeCamion() {
+		return vehiculeRep.getNombreCamion();
+	}
+	
+	@RequestMapping(value="/nbVoiture",method=RequestMethod.GET)
+	public int getNombreVehiculeVoiture() {
+		return vehiculeRep.getNombreVoiture();
+	}
+	
 }
