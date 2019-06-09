@@ -14,6 +14,9 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 
 	@Query("select v from Depense v where v.vehicule_dep.immatriculation like :parametre")
 	public List<Depense> getbyImmatricul(@Param("parametre") String parametre);
+	
+	@Query("select v from Depense v where v.description_depense like :parametre")
+	public Depense getbyDescription(@Param("parametre") String parametre);
 
 //	String q = "select SUM(dep.ttc) from Depense dep where MONTH(dep.date_depense) = :mois ";
 //	String matricule = " and dep.vehicule_dep.immatriculation  =:matricule";

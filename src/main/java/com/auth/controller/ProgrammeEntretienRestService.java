@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.entitie.Energie;
 import com.auth.entitie.ProgrammeEntretien;
 import com.auth.repository.ProgrammeEntretienRepository;
 
@@ -58,4 +59,10 @@ public class ProgrammeEntretienRestService {
 //	public ProgrammeEntretien getProgEntretiensTE(){
 //		return progEntreRep.findbyTypeEntr();
 //	}
+	
+	
+	@RequestMapping(value="/entretienByDes/{parametre}",method=RequestMethod.GET)
+	public ProgrammeEntretien getEntretienByDes(@PathVariable String parametre){
+		return progEntreRep.findByDescription("%"+parametre+"%");
+	}
 }

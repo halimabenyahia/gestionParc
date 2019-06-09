@@ -72,6 +72,9 @@ public class DepenseRestService {
 //	public Long getSum(){
 //		return depenseRep.montantTotal();
 //	}
-	
+	@RequestMapping(value="/depenseDesTest/{parametre}",method=RequestMethod.GET)
+	public Depense getDepenseByDesTest(@PathVariable String parametre){
+		return depenseRep.getbyDescription("%"+parametre);
+	}
 
 }

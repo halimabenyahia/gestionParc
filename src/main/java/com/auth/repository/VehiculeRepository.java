@@ -48,4 +48,7 @@ public interface VehiculeRepository extends JpaRepository<Vehicule, Integer> {
 	@Query("select COUNT(v.immatriculation) from Vehicule v where v.type_vehicule.des_typeVehicule = 'voiture' ")
 	public int getNombreVoiture();
 	
+	@Query("select v from Vehicule v where v.immatriculation like :chaine")
+	public List<Vehicule> getVignetteByImm(@Param("chaine") String chaine);
+	
 }

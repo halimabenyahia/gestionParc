@@ -1,8 +1,10 @@
 package com.auth.restService;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -22,20 +24,21 @@ public class DepenseTestRestService extends TestParcRestController {
 
 	TestParc testParc;
 
+	@Test
 	@Override
 	public void getAllEntityList() {
 		try {
 			Depense depense = new Depense();
-		//	depense.setDate_depense(2018/02/02);
-		//	energieService.addEnergie(energie);
-			mvcResult = mvc.perform(MockMvcRequestBuilders.get("/energies").accept(MediaType.APPLICATION_JSON_VALUE))
+			depense.setDescription_depense("depense 1");
+			depenseService.addDepense(depense);
+			mvcResult = mvc.perform(MockMvcRequestBuilders.get("/listdepenses").accept(MediaType.APPLICATION_JSON_VALUE))
 					.andReturn();
 
 			int status = mvcResult.getResponse().getStatus();
 			assertEquals(200, status);
 			String content = mvcResult.getResponse().getContentAsString();
-			Energie[] energieList = testParc.mapFromJson(content, Energie[].class);
-			assertTrue(energieList.length > 0);
+			Depense[] ListDepense = testParc.mapFromJson(content, Depense[].class);
+			assertTrue(ListDepense.length > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,21 +46,68 @@ public class DepenseTestRestService extends TestParcRestController {
 		
 	}
 
+	@Test
 	@Override
 	public void createEntity() {
-		// TODO Auto-generated method stub
+		try {
+			Depense depense = new Depense();
+			depense.setDescription_depense("depense 1");
+			depenseService.addDepense(depense);
+			String inputJson = testParc.mapToJson(depense);
+			mvcResult = mvc.perform(MockMvcRequestBuilders.post("/addDepense")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Depense foundEnergie = depenseService.getDepenseByDesTest(depense.getDescription_depense());
+			assertNotNull(foundEnergie);
+			assertEquals(foundEnergie.getDescription_depense(), depense.getDescription_depense());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
+	@Test
 	@Override
 	public void updateEntity() {
-		// TODO Auto-generated method stub
+		try {
+			Depense depense = new Depense();
+			depense.setDescription_depense("depense 1");
+			depenseService.addDepense(depense);
+			depense.setDescription_depense("depense 2");
+			String inputJson = testParc.mapToJson(depense);
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.put("/editDepense")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Depense FoundDepense = depenseService.getDepenseByDesTest(depense.getDescription_depense());
+			assertNotNull(FoundDepense);
+			assertEquals(FoundDepense.getDescription_depense(), depense.getDescription_depense());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
+	@Test
 	@Override
 	public void deleteEntity() {
-		// TODO Auto-generated method stub
+		try {
+			Depense depense = new Depense();
+			depense.setDescription_depense("depense 1");
+			depenseService.addDepense(depense);
+			String inputJson = testParc.mapToJson(depense);
+			MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete("/deleteDepense")
+					.contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+			int status = mvcResult.getResponse().getStatus();
+			assertEquals(200, status);
+			Depense FoundDepense = depenseService.getDepenseByDesTest(depense.getDescription_depense());
+			assertEquals(null, FoundDepense);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
