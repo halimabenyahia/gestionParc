@@ -58,17 +58,6 @@ public class Depense {
 	    this.typedepense = new TypeDepense();
 	    typedepense.setId_typeDepense(id_typeDepense);
 	}
-	
-	@ManyToMany
-	@JoinTable(name="Association",joinColumns= @JoinColumn(name="id_depense"),
-	                inverseJoinColumns=@JoinColumn(name="id_piece"))
-	Set<Piece> pieces = new HashSet<Piece>();
-	
-//	@JsonProperty("id_piece")
-//	private void unpackPiece(Integer id_piece) {
-//	    this.pieces = new HashSet<Piece>();
-//	   // pieces.s;
-//	}
 
 	public int getId_depense() {
 		return id_depense;
@@ -151,14 +140,6 @@ public class Depense {
 	public void setTypedepense(TypeDepense typedepense) {
 		this.typedepense = typedepense;
 	}
-	
-	public Set<Piece> getPieces() {
-		return pieces;
-	}
-
-	public void setPieces(Set<Piece> pieces) {
-		this.pieces = pieces;
-	}
 
 	public String getDescription_depense() {
 		return description_depense;
@@ -174,7 +155,7 @@ public class Depense {
 	}
 
 	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc, Date date_caisse,
-			String reference_d, String compteur_d, Vehicule vehicule_dep, TypeDepense typedepense, Set<Piece> pieces) {
+			String reference_d, String compteur_d, Vehicule vehicule_dep, TypeDepense typedepense) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
@@ -186,7 +167,6 @@ public class Depense {
 		this.compteur_d = compteur_d;
 		this.vehicule_dep = vehicule_dep;
 		this.typedepense = typedepense;
-		this.pieces = pieces;
 	}
 
 }

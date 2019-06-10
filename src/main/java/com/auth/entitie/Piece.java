@@ -43,14 +43,6 @@ public class Piece {
 	@JoinColumn(name="id_sortieStock")
 	private SortieStock sortie_stock ;
 	
-	@ManyToMany(mappedBy="pieces")
-	private Set<Depense> depenses ;
-	
-	@JsonProperty("id_depense")
-	private void unpackDepense(Integer id_depense) {
-	    this.depenses = new HashSet<Depense>();
-	    //depenses.
-	}
 
 	public int getId_piece() {
 		return id_piece;
@@ -116,17 +108,11 @@ public class Piece {
 		this.sortie_stock = sortie_stock;
 	}
 
-	public Set<Depense> getDepenses() {
-		return depenses;
-	}
-
-	public void setDepenses(Set<Depense> depenses) {
-		this.depenses = depenses;
-	}
+	
 
 	
 	public Piece(int id_piece, String reference_piece, String des_piece, Long tva_p, Long prix_achat,TypePiece type_piece_p, EntreeStock entre_stock,
-			SortieStock sortie_stock, Set<Depense> depenses) {
+			SortieStock sortie_stock) {
 		super();
 		this.id_piece = id_piece;
 		this.reference_piece = reference_piece;
@@ -136,7 +122,6 @@ public class Piece {
 		this.type_piece_p = type_piece_p;
 		this.entre_stock = entre_stock;
 		this.sortie_stock = sortie_stock;
-		this.depenses = depenses;
 	}
 
 	public Piece() {
