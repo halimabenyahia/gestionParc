@@ -28,15 +28,11 @@ public class Depense {
 	private int id_depense ;
 	@Temporal(TemporalType.DATE)
 	private Date date_depense ;
-	//private Long montant_ht ;
-	//private Long tva ;
-	//private Long ttc ;
-
-//	@Temporal(TemporalType.DATE)
-//	private Date date_caisse ;
 	private String reference_d ;
 	private String compteur_d ;
 	private String description_depense ;
+	private Long total_ttc ;
+    private Long total_ht ;
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -74,39 +70,6 @@ public class Depense {
 	public void setDate_depense(Date date_depense) {
 		this.date_depense = date_depense;
 	}
-
-//	public Long getMontant_ht() {
-//		return montant_ht;
-//	}
-//
-//	public void setMontant_ht(Long montant_ht) {
-//		this.montant_ht = montant_ht;
-//	}
-//
-//	public Long getTva() {
-//		return tva;
-//	}
-//
-//	public void setTva(Long tva) {
-//		this.tva = tva;
-//	}
-//
-//	public Long getTtc() {
-//		return ttc;
-//	}
-//
-//	public void setTtc(Long ttc) {
-//		this.ttc = ttc;
-//	}
-//
-//
-//	public Date getDate_caisse() {
-//		return date_caisse;
-//	}
-//
-//	public void setDate_caisse(Date date_caisse) {
-//		this.date_caisse = date_caisse;
-//	}
 
 	public String getReference_d() {
 		return reference_d;
@@ -148,25 +111,42 @@ public class Depense {
 	public void setDescription_depense(String description_depense) {
 		this.description_depense = description_depense;
 	}
+	
+
+	public Long getTotal_ttc() {
+		return total_ttc;
+	}
+
+	public void setTotal_ttc(Long total_ttc) {
+		this.total_ttc = total_ttc;
+	}
+
+	public Long getTotal_ht() {
+		return total_ht;
+	}
+
+	public void setTotal_ht(Long total_ht) {
+		this.total_ht = total_ht;
+	}
 
 	public Depense() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Depense(int id_depense, Date date_depense, Long montant_ht, Long tva, Long ttc, Date date_caisse,
-			String reference_d, String compteur_d, Vehicule vehicule_dep, TypeDepense typedepense) {
+	public Depense(int id_depense, Date date_depense, String reference_d, String compteur_d, String description_depense,
+			Long total_ttc, Long total_ht, Vehicule vehicule_dep, TypeDepense typedepense) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
-//		this.montant_ht = montant_ht;
-//		this.tva = tva;
-//		this.ttc = ttc;
-//		this.date_caisse = date_caisse;
 		this.reference_d = reference_d;
 		this.compteur_d = compteur_d;
+		this.description_depense = description_depense;
+		this.total_ttc = total_ttc;
+		this.total_ht = total_ht;
 		this.vehicule_dep = vehicule_dep;
 		this.typedepense = typedepense;
 	}
+
 
 }

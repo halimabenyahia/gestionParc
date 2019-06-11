@@ -97,6 +97,11 @@ public class VehiculeRestService {
 		return vehiculeRep.getNombreVoiture();
 	}
 	
+	@RequestMapping(value="/nbVoitureEss",method=RequestMethod.GET)
+	public int getNombreEss() {
+		return vehiculeRep.getNombreEssence();
+	}
+	
 	@RequestMapping(value="/vignetteByImm/{chaine}",method=RequestMethod.GET)
 	public List<Vehicule> getVignetteByIMm(@PathVariable String chaine) {
 		return vehiculeRep.getVignetteByImm("%"+chaine+"%");
