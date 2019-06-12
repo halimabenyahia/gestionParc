@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +24,11 @@ public class Depense_Piece {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_depense_piece ;
-	private int tva_dp ;
 	private BigDecimal hors_taxe ;
 	private BigDecimal ttc_dp ;
 	private int qte ;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_depense")
 	private Depense depense_dp ;
 	
@@ -57,16 +57,6 @@ public class Depense_Piece {
 
 	public void setId_depense_piece(int id_depense_piece) {
 		this.id_depense_piece = id_depense_piece;
-	}
-
-
-	public int getTva_dp() {
-		return tva_dp;
-	}
-
-
-	public void setTva_dp(int tva_dp) {
-		this.tva_dp = tva_dp;
 	}
 
 
@@ -126,18 +116,16 @@ public class Depense_Piece {
 	}
 
 
-	public Depense_Piece(int id_depense_piece, int tva_dp, BigDecimal hors_taxe, BigDecimal ttc_dp, int qte,
-			Depense depense_dp, Piece piece_dep) {
+	public Depense_Piece(int id_depense_piece, BigDecimal hors_taxe, BigDecimal ttc_dp, int qte, Depense depense_dp,
+			Piece piece_dep) {
 		super();
 		this.id_depense_piece = id_depense_piece;
-		this.tva_dp = tva_dp;
 		this.hors_taxe = hors_taxe;
 		this.ttc_dp = ttc_dp;
 		this.qte = qte;
 		this.depense_dp = depense_dp;
 		this.piece_dep = piece_dep;
 	}
-
 
 
 }

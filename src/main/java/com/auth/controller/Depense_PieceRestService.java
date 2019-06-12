@@ -48,4 +48,9 @@ public class Depense_PieceRestService {
 	public Depense_Piece edit(@RequestBody Depense_Piece c){
 		 return depensePieceRep.save(c);
 	}
+	
+	@RequestMapping(value="/abc",method=RequestMethod.GET)
+	public Depense_Piece aaa(){
+		 return depensePieceRep.getBY();
+	}
 }
