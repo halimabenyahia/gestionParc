@@ -34,6 +34,11 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 //	public Long montantTotal();
 	
 	
+	@Query("select d from Depense d ")
+	public List<Depense> getDepenseMaster();
+	
+	@Query("select MAX(d.id_depense) from Depense d ")
+	public int getMaxId_depense();
 	
 	
  

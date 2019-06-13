@@ -28,7 +28,7 @@ public class Depense_Piece {
 	private BigDecimal ttc_dp ;
 	private int qte ;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne()
 	@JoinColumn(name="id_depense")
 	private Depense depense_dp ;
 	

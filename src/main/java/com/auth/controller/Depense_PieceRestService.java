@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auth.entitie.Chauffeurs;
+import com.auth.entitie.Depense;
 import com.auth.entitie.Depense_Piece;
 import com.auth.repository.Depense_PieceRepository;
+import com.auth.service.DepensePieceService;
 
 @RestController
 @CrossOrigin(origins="*", allowedHeaders = "*")
@@ -22,6 +24,9 @@ public class Depense_PieceRestService {
 	
 	@Autowired
 	Depense_PieceRepository depensePieceRep ;
+	
+	@Autowired
+	DepensePieceService depensePieceService ;
 	
 	@RequestMapping(value="/depensePieceList",method=RequestMethod.GET)
 	public List<Depense_Piece> getDepensePieceList(){
@@ -33,10 +38,10 @@ public class Depense_PieceRestService {
 		return depensePieceRep.findById(id);
 	}
 	
-	@RequestMapping(value="/adddepensePiece",method=RequestMethod.POST)
-	public Depense_Piece addDepensePiece(@RequestBody Depense_Piece c){
-		return depensePieceRep.save(c);
-	}
+//	@RequestMapping(value="/adddepensePiece",method=RequestMethod.POST)
+//	public Depense_Piece addDepensePiece(@RequestBody Depense_Piece c){
+//		return depensePieceRep.save(c);
+//	}
 	
 	@RequestMapping(value="/deletedepensePiece/{id}",method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable int id){
@@ -49,8 +54,13 @@ public class Depense_PieceRestService {
 		 return depensePieceRep.save(c);
 	}
 	
-	@RequestMapping(value="/abc",method=RequestMethod.GET)
-	public Depense_Piece aaa(){
-		 return depensePieceRep.getBY();
+	@RequestMapping(value="/affiche",method=RequestMethod.GET)
+	public List<Depense_Piece> getList(){
+		return depensePieceService.getResult(); 
+	}
+	
+	@RequestMapping(value="/ajoutDepensePiece",method=RequestMethod.POST)
+	public Depense_Piece add (@RequestBody Depense d , @RequestBody List<Depense_Piece> dp) {
+		return depensePieceRep.save(d, dp);
 	}
 }

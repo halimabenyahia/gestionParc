@@ -76,5 +76,10 @@ public class DepenseRestService {
 	public Depense getDepenseByDesTest(@PathVariable String parametre){
 		return depenseRep.getbyDescription("%"+parametre);
 	}
+	
+	@RequestMapping(value="/maxIdDepense",method=RequestMethod.GET)
+	public int getDernierDepense(){
+		return depenseRep.getMaxId_depense();
+	}
 
 }
