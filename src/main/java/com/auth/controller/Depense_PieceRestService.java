@@ -38,10 +38,10 @@ public class Depense_PieceRestService {
 		return depensePieceRep.findById(id);
 	}
 	
-//	@RequestMapping(value="/adddepensePiece",method=RequestMethod.POST)
-//	public Depense_Piece addDepensePiece(@RequestBody Depense_Piece c){
-//		return depensePieceRep.save(c);
-//	}
+	@RequestMapping(value="/adddepensePiece",method=RequestMethod.POST)
+	public Depense_Piece addDepensePiece(@RequestBody Depense_Piece c){
+		return depensePieceRep.save(c);
+	}
 	
 	@RequestMapping(value="/deletedepensePiece/{id}",method=RequestMethod.DELETE)
 	public boolean supprimer(@PathVariable int id){
@@ -54,13 +54,13 @@ public class Depense_PieceRestService {
 		 return depensePieceRep.save(c);
 	}
 	
-	@RequestMapping(value="/affiche",method=RequestMethod.GET)
-	public List<Depense_Piece> getList(){
-		return depensePieceService.getResult(); 
-	}
+//	@RequestMapping(value="/affiche",method=RequestMethod.GET)
+//	public List<Depense_Piece> getList(){
+//		return depensePieceService.getResult(); 
+//	}
 	
-	@RequestMapping(value="/ajoutDepensePiece",method=RequestMethod.POST)
-	public Depense_Piece add (@RequestBody Depense d , @RequestBody List<Depense_Piece> dp) {
-		return depensePieceRep.save(d, dp);
+	@RequestMapping(value="/ajout",method=RequestMethod.POST)
+	public List<Depense_Piece> add (@RequestBody Depense d , @RequestBody List<Depense_Piece> dp) {
+		return depensePieceService.add(d,dp);
 	}
 }
