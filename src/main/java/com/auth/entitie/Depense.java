@@ -33,6 +33,7 @@ public class Depense {
 	private String description_depense ;
 	private Long total_ttc ;
     private Long total_ht ;
+    private Long montant_carburant ;
 	
 	@OneToOne
 	@JoinColumn(name="id_vehicule")
@@ -129,13 +130,21 @@ public class Depense {
 		this.total_ht = total_ht;
 	}
 
+	public Long getMontant_carburant() {
+		return montant_carburant;
+	}
+
+	public void setMontant_carburant(Long montant_carburant) {
+		this.montant_carburant = montant_carburant;
+	}
+
 	public Depense() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Depense(int id_depense, Date date_depense, String reference_d, String compteur_d, String description_depense,
-			Long total_ttc, Long total_ht, Vehicule vehicule_dep, TypeDepense typedepense) {
+			Long total_ttc, Long total_ht, Vehicule vehicule_dep, TypeDepense typedepense , Long montant_carburant) {
 		super();
 		this.id_depense = id_depense;
 		this.date_depense = date_depense;
@@ -146,6 +155,7 @@ public class Depense {
 		this.total_ht = total_ht;
 		this.vehicule_dep = vehicule_dep;
 		this.typedepense = typedepense;
+		this.montant_carburant = montant_carburant;
 	}
 
 

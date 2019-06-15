@@ -39,8 +39,8 @@ public class Depense_PieceRestService {
 	}
 	
 	@RequestMapping(value="/adddepensePiece",method=RequestMethod.POST)
-	public Depense_Piece addDepensePiece(@RequestBody Depense_Piece c){
-		return depensePieceRep.save(c);
+	public List<Depense_Piece> addDepensePiece(@RequestBody List<Depense_Piece> c){
+		return depensePieceRep.saveAll(c);
 	}
 	
 	@RequestMapping(value="/deletedepensePiece/{id}",method=RequestMethod.DELETE)
@@ -62,5 +62,10 @@ public class Depense_PieceRestService {
 	@RequestMapping(value="/ajout",method=RequestMethod.POST)
 	public List<Depense_Piece> add (@RequestBody Depense d , @RequestBody List<Depense_Piece> dp) {
 		return depensePieceService.add(d,dp);
+	}
+	
+	@RequestMapping(value="/totalht",method=RequestMethod.GET)
+	public Long totalHT () {
+		return depensePieceRep.getTotalHT();
 	}
 }

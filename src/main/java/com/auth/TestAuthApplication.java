@@ -59,7 +59,7 @@ public class TestAuthApplication implements CommandLineRunner {
 	//	System.out.println("listeDepense");
 	//	depenseService.listeDepenses();
 		
-		depPService.getResult();
+	//	depPService.getResult();
 		
 		
 	  }

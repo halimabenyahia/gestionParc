@@ -17,7 +17,8 @@ public interface Depense_PieceRepository extends JpaRepository<Depense_Piece, In
 	@Query("select dp.piece_dep.des_piece from Depense_Piece dp")
 	public List<Depense_Piece> getListDepPiece();
 
-	//public Depense_Piece save(Depense d, List<Depense_Piece> dp);
+	@Query("select SUM(d.hors_taxe) from Depense_Piece d ")
+	public Long getTotalHT();
 	
 	
 	
