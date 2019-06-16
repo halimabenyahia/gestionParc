@@ -36,6 +36,7 @@ public class Depense {
     private Long montant_carburant ;
 	
 	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="id_vehicule")
 	private Vehicule vehicule_dep ;
 	

@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -28,7 +30,8 @@ public class Depense_Piece {
 	private BigDecimal ttc_dp ;
 	private int qte ;
 	
-	@OneToOne()
+	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="id_depense")
 	private Depense depense_dp ;
 	
@@ -40,6 +43,7 @@ public class Depense_Piece {
 	
 	
 	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="id_piece")
 	private Piece piece_dep ;
 	

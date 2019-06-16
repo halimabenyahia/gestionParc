@@ -81,5 +81,11 @@ public class DepenseRestService {
 	public int getDernierDepense(){
 		return depenseRep.getMaxId_depense();
 	}
+	
+	
+	@RequestMapping(value="/sommeCarbu",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumCarburant(){
+		return depenseService.listeDepensesByCarburant(); 
+	}
 
 }
