@@ -87,5 +87,15 @@ public class DepenseRestService {
 	public List<DepenseResponse> getSumCarburant(){
 		return depenseService.listeDepensesByCarburant(); 
 	}
+	
+	@RequestMapping(value="/sommePiece",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumPiecess(){
+		return depenseService.listeDepensesByPiece(); 
+	}
+	
+	@RequestMapping(value="/sumdepensePieceByimm/{parametre}",method=RequestMethod.GET)
+	public List<DepenseResponse> getSumDepenceCarburantByImm(@PathVariable String parametre){
+		return depenseService.oneDepenseCarburant(parametre);
+	}
 
 }
