@@ -68,4 +68,8 @@ public class Depense_PieceRestService {
 	public Long totalHT () {
 		return depensePieceRep.getTotalHT();
 	}
+	@RequestMapping(value="/totalttc",method=RequestMethod.GET)
+	public Long totalTTC () {
+		return depensePieceRep.getTotalTTC();
+	}
 }

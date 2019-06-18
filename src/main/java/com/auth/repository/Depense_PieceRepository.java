@@ -22,6 +22,10 @@ public interface Depense_PieceRepository extends JpaRepository<Depense_Piece, In
 	public Long getTotalHT();
 	
 	
+	@Query("select SUM(d.ttc_dp) from Depense_Piece d")
+	public Long getTotalTTC();
+	
+	
 	String q1 = "select SUM(dep.ttc_dp) from Depense_Piece dep where MONTH(dep.depense_dp.date_depense) = :mois ";
 	String matricule1 = " and dep.depense_dp.vehicule_dep.immatriculation  =:matricule";
 	@Query(q1 + matricule1)
