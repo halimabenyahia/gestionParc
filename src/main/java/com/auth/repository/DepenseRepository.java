@@ -40,6 +40,9 @@ public interface DepenseRepository extends JpaRepository<Depense, Integer> {
 	@Query("select MAX(d.id_depense) from Depense d ")
 	public int getMaxId_depense();
 	
+	@Query("select d from Depense d where d.typedepense.designation_typeDep = 'carburant' ")
+	public List<Depense> getDepenseCarburant();
+	
 	
 	String q = "select SUM(dep.montant_carburant) from Depense dep where MONTH(dep.date_depense) = :mois ";
 	String matricule = " and dep.vehicule_dep.immatriculation  =:matricule";
