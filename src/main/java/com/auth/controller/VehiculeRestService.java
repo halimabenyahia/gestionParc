@@ -22,7 +22,6 @@ public class VehiculeRestService {
 	private VehiculeRepository vehiculeRep ;
 	
 	@RequestMapping(value="/vehicules",method=RequestMethod.GET)
-	
 	public List<Vehicule> getAllVehicule(){
 		return vehiculeRep.findAll();
 	}
