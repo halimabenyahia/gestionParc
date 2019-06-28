@@ -91,6 +91,10 @@ public class Vehicule {
 	@JoinColumn(name="id_assurance")
 	private Assurance assurance_vehicule ;
 	
+	@OneToOne
+	@JoinColumn(name="id_modele")
+	private Modele modele_vehicule ;
+	
 	
 	@JsonProperty("id_chauffeur")
 	private void unpackNested(Integer id_chauffeur) {
@@ -133,6 +137,12 @@ public class Vehicule {
 	private void unpackaffectation(Integer id_affectation) {
 	    this.affectation_vehicule = new AffectationVehicule();
 	    affectation_vehicule.setId_affectation(id_affectation);
+	}
+	
+	@JsonProperty("id_modele")
+	private void unpackModele(Integer id_modele) {
+	    this.modele_vehicule = new Modele();
+	    modele_vehicule.setId_modele(id_modele);
 	}
 
 	public int getId_vehicule() {
@@ -351,6 +361,13 @@ public class Vehicule {
 		this.assurance_vehicule = assurance_vehicule;
 	}
 
+	public Modele getModele_vehicule() {
+		return modele_vehicule;
+	}
+
+	public void setModele_vehicule(Modele modele_vehicule) {
+		this.modele_vehicule = modele_vehicule;
+	}
 
 	public Vehicule(int id_vehicule, String immatriculation, Date date_m_c, Date date_acq, Long cout_achat,
 			Long compteur, String num_moteur, String num_fab, Date date_deb_taxe, Date date_fin_taxe, Long montant_taxe,
@@ -358,7 +375,7 @@ public class Vehicule {
 			Long montant_visit_tech, Date date_deb_contrat, Date date_fin_contrat, Long montant_contratAss,
 			TypeVehicule type_vehicule, TypeBoite type_boite, Energie energie_v,
 			AffectationVehicule affectation_vehicule, Marque marque_v, Chauffeurs chauffeur_v,
-			Assurance assurance_vehicule) {
+			Assurance assurance_vehicule , Modele modele_vehicule) {
 		super();
 		this.id_vehicule = id_vehicule;
 		this.immatriculation = immatriculation;
@@ -387,6 +404,7 @@ public class Vehicule {
 		this.marque_v = marque_v;
 		this.chauffeur_v = chauffeur_v;
 		this.assurance_vehicule = assurance_vehicule;
+		this.modele_vehicule  = modele_vehicule ;
 	}
 
 	public Vehicule() {
